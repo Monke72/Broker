@@ -1,10 +1,12 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "baseUrl": "src",
     "paths": {
-      "@fonts/*": ["src/shared/assets/*"]
+      "@shared/*": ["shared/*"]
     },
-    "jsx": "react-jsx"
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }

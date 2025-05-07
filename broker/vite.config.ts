@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@fonts": path.resolve(__dirname, "./src/shared/assets"),
+      "@shared": path.resolve(__dirname, "src/shared/"),
     },
   },
 });

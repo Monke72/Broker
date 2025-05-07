@@ -1,10 +1,11 @@
+@import "./reset/reset.scss";
 @import "./mixins/mixins";
 @import "./variables/global.scss";
 
 body {
-  font-family: var(--main-font);
-  color: var(--color-light);
-  font-size: var(--main-size);
+  font-family: var(--font-family-main);
+  color: var(--color-text);
+  font-size: var(--font-size-m);
   height: 100vh;
   background-color: var(--color-dark);
 }
