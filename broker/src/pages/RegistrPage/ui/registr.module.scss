@@ -1,0 +1,31 @@
+.reg {
+  height: 100vh;
+  background-color: var(--color-blue);
+  background-image: url(../../../shared/assets/images/regBack.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  &__name {
+  }
+  &__page {
+    color: var(--color-blue-light);
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__avatar {
+    display: flex;
+    align-items: center;
+    h3 {
+      line-height: 1;
+    }
+    span {
+      font-family: var(--font-family-main);
+    }
+  }
+}

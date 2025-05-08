@@ -11,6 +11,13 @@ body {
 }
 
 .container {
-  padding-inline: 40px;
+  max-width: 1450px;
+  padding-inline: 15px;
   margin-inline: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-bold);
 }

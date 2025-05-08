@@ -2,9 +2,10 @@
   "include": ["src"],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@widgets/*": ["src/widgets/*"]
     },
     "allowImportingTsExtensions": true,
     "noEmit": true

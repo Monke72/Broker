@@ -1,0 +1,36 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  transform: translate(-50%, 75%);
+  left: 50%;
+  &__title {
+    color: var(--color-light);
+  }
+  &__info {
+    padding-top: 10px;
+    font-size: var(--font-size-xl);
+    color: var(--color-light-any);
+    font-weight: 300;
+  }
+
+  &__checkbox {
+  }
+  label {
+    color: rgba(238, 238, 238, 0.5);
+    line-height: 1;
+    span {
+      font-size: 16px;
+      font-family: var(--font-family-bold);
+      text-decoration: underline;
+      text-transform: uppercase;
+    }
+  }
+}
+.field {
+  display: flex;
+  padding-block: 20px;
+}

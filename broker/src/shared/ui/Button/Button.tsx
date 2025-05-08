@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes, FC } from "react";
 import cls from "./button.module.scss";
+import { clsx } from "clsx";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -8,10 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: FC<ButtonProps> = (props) => {
   const { className, children } = props;
   return (
-    <button
-      type="button"
-      className={`${cls.button}${className ? ` ${className}` : ""}`}
-    >
+    <button type="button" className={clsx(cls.button, className)}>
       {children}
     </button>
   );
