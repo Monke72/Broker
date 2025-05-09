@@ -3,9 +3,14 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Node",
     "paths": {
       "@shared/*": ["src/shared/*"],
-      "@widgets/*": ["src/widgets/*"]
+      "@widgets/*": ["src/widgets/*"],
+      "@app/*": ["src/app/*"],
+      "@features/*": ["src/features/*"]
     },
     "allowImportingTsExtensions": true,
     "noEmit": true

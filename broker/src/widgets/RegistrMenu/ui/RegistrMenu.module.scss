@@ -17,8 +17,6 @@
     font-weight: 300;
   }
 
-  &__checkbox {
-  }
   label {
     color: rgba(238, 238, 238, 0.5);
     line-height: 1;
@@ -33,4 +31,31 @@
 .field {
   display: flex;
   padding-block: 20px;
+}
+.menu__checkbox[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-blue);
+  cursor: pointer;
+}
+.menu__checkbox[type="checkbox"]:checked {
+  background-color: var(--color-blue-light);
+  border: 0;
+  position: relative;
+  &::after {
+    content: url(../../../shared/assets/icons/gl.svg);
+    position: absolute;
+    transform: scale(1);
+    width: 11px;
+    z-index: 11;
+    left: 2px;
+    top: -2px;
+  }
+}
+
+.menu__icon-pass {
+  top: 37% !important;
+  left: 5px;
 }

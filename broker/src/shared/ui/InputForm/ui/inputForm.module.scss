@@ -50,3 +50,13 @@
   border: 2px solid #ffc107;
   background-color: #ffca28;
 }
+
+.input__password {
+  position: absolute;
+  cursor: pointer;
+  right: 0px;
+  top: 56%;
+  right: 30px;
+  transform: translate(50%, -50%);
+  padding: 5px;
+}
