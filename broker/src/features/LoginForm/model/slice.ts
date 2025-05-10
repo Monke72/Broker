@@ -24,4 +24,4 @@ const userSlice = createSlice({
 });
 const userReducer = userSlice.reducer;
 export default userReducer;
-export const { setMailReg, setPasswordReg } = userSlice.actions;
+export const { setMailReg, setPasswordReg, setEntry } = userSlice.actions;

@@ -9,7 +9,11 @@ import { InputType } from "@shared/ui/InputForm/index";
 import { validateEmail } from "@shared/utils/emailValidator";
 import { passwordValid } from "@shared/utils/passwordValidator";
 import { useAppDispatch } from "@shared/hooks/StoreHooks/StoreHooks";
-import { setMailReg, setPasswordReg } from "@features/LoginForm/model/slice";
+import {
+  setEntry,
+  setMailReg,
+  setPasswordReg,
+} from "@features/LoginForm/model/slice";
 
 const RegistrMenu: FC = () => {
   //form
@@ -41,6 +45,7 @@ const RegistrMenu: FC = () => {
     if (emailIsValid && passwordIsValid && agreeIsValid) {
       dispatch(setMailReg(email));
       dispatch(setPasswordReg(password));
+      dispatch(setEntry(true));
       // возможно навигация или submit
     }
   };
