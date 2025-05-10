@@ -4,8 +4,7 @@
   background-image: url(../../../shared/assets/images/regBack.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  &__name {
-  }
+
   &__page {
     color: var(--color-blue-light);
   }
@@ -17,6 +16,8 @@
   &__wrapper {
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    gap: 15%;
   }
   &__avatar {
     display: flex;

@@ -21,3 +21,8 @@ h2,
 h3 {
   font-family: var(--font-family-bold);
 }
+img,
+svg {
+  user-select: none; /* запрет выделения */
+  -webkit-user-drag: none; /* запрет drag-n-drop в браузерах на WebKit */
+}

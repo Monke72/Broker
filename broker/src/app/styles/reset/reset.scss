@@ -206,3 +206,11 @@ button {
 button:focus {
   outline: none;
 }
+span,
+div {
+  &:focus,
+  &:focus-visible,
+  &:active {
+    outline: none;
+  }
+}

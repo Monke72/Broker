@@ -1,5 +1,5 @@
-import { RootState, AppDispatch } from "./ui/store";
-import store from "./ui/store";
+import store from "./store";
 import AppRouter from "./ui/AppRouter";
+import { persistor } from "./store";
 
-export { RootState, AppDispatch, store, AppRouter as StoreProvider };
+export { store, AppRouter as StoreProvider, persistor };

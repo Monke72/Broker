@@ -3,10 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
   text-align: center;
-  transform: translate(-50%, 75%);
-  left: 50%;
+
   &__title {
     color: var(--color-light);
   }
@@ -58,4 +56,12 @@
 .menu__icon-pass {
   top: 37% !important;
   left: 5px;
+}
+.menu__checkbox[type="checkbox"].check__error {
+  border: 1px solid red;
+}
+.menu__checkbox[type="checkbox"].check__error {
+  &:checked {
+    border: 0;
+  }
 }
