@@ -1,0 +1,84 @@
+@use "./../../../app/styles/mixins/mixins" as *;
+
+.sider {
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: start;
+  height: 100vh;
+  background-color: var(--color-text);
+  &__application {
+    background-color: var(--color-blue-light);
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    color: var(--color-light);
+    line-height: 1;
+    &-text {
+      font-size: 12px;
+      font-family: var(--font-family-main);
+    }
+  }
+  &__user {
+    display: flex;
+    color: var(--color-light);
+    padding-left: 36px;
+    align-items: center;
+    padding-block: 40px;
+    gap: 26px;
+    &-info {
+      display: flex;
+      flex-direction: column;
+    }
+    &-rating {
+      display: flex;
+      gap: 6px;
+    }
+    &-mail {
+      padding-top: 5px;
+    }
+    &-exit {
+      display: flex;
+      gap: 5px;
+      color: var(--color-blue-accent);
+      align-items: center;
+    }
+  }
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-blue-accent);
+    width: 100%;
+    align-items: center;
+    font-size: 16px;
+    &-list {
+      width: 100%;
+    }
+    &-item {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      width: 100%;
+      padding-block: 20px;
+      border-bottom: 1px solid #2e3645;
+      padding-left: 36px;
+      gap: 18px;
+      @include hover {
+        background-color: var(--color-blue-light);
+        opacity: 0.5;
+        color: var(--color-light);
+      }
+    }
+  }
+}
+.sider__nav-item.item--active {
+  background-color: var(--color-blue-light);
+  color: var(--color-light);
+  @include hover {
+    background-color: var(--color-blue-light);
+    color: var(--color-light);
+    opacity: 1;
+  }
+}

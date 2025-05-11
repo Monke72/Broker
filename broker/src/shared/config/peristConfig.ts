@@ -5,7 +5,7 @@ import { IUserState } from "@shared/types/globalTypes";
 const persistConfig: PersistConfig<IUserState> = {
   key: "user",
   storage,
-  whitelist: ["entry"], // Сохраняем только поле `entry`
+  whitelist: ["entry", "mail", "password"], // Сохраняем только поле `entry`
 };
 
 export default persistConfig;

@@ -1,13 +1,9 @@
 /**
   Нормализация блочной модели
  */
-*,
-*::before,
-*::after,
-*:focus,
-*:active {
+* {
   box-sizing: border-box;
-  border: none;
+  border: 0;
 }
 
 ul,
@@ -205,12 +201,4 @@ button {
 .btn:focus,
 button:focus {
   outline: none;
-}
-span,
-div {
-  &:focus,
-  &:focus-visible,
-  &:active {
-    outline: none;
-  }
 }

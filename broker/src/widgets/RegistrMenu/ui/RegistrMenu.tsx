@@ -14,6 +14,7 @@ import {
   setMailReg,
   setPasswordReg,
 } from "@features/LoginForm/model/slice";
+import { useNavigate } from "react-router-dom";
 
 const RegistrMenu: FC = () => {
   //form
@@ -28,6 +29,7 @@ const RegistrMenu: FC = () => {
   const [agreeError, setAgreeError] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     const emailIsValid = validateEmail(email);
@@ -46,7 +48,7 @@ const RegistrMenu: FC = () => {
       dispatch(setMailReg(email));
       dispatch(setPasswordReg(password));
       dispatch(setEntry(true));
-      // возможно навигация или submit
+      navigate("/homepage", { replace: true }); //переходим на главную страницу и запрещаем переход назад
     }
   };
 
@@ -101,6 +103,7 @@ const RegistrMenu: FC = () => {
           <span>политикой конфиденциальности</span>
         </label>
       </div>
+
       <Button onClick={handleSubmit}>Зарегистрироваться</Button>
     </div>
   );
