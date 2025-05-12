@@ -1,4 +1,3 @@
-import { FC } from "react";
 import cls from "./Sider.module.scss";
 import applicationIcon from "@shared/assets/icons/applicationIcon.svg";
 import userIcon from "@shared/assets/icons/userProfile.svg";
@@ -16,10 +15,16 @@ import {
   setMailReg,
   setPasswordReg,
 } from "@features/LoginForm/model/slice";
+import { NavSectionType } from "@pages/HomePage/ui/HomePage";
 
-const Sider: FC = () => {
+interface ISider {
+  navSection: NavSectionType;
+  setNavSection: React.Dispatch<React.SetStateAction<NavSectionType>>;
+}
+
+const Sider = ({ navSection, setNavSection }: ISider) => {
   const userMail = useAppSelector((state) => state.userReg.mail);
-  console.log(userMail);
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -62,13 +67,19 @@ const Sider: FC = () => {
       </div>
       <nav className={cls.sider__nav}>
         <ul className={cls["sider__nav-list"]}>
-          <li className={`${cls["sider__nav-item"]} ${cls["item--active"]}`}>
+          <li
+            className={`${cls["sider__nav-item"]} ${navSection === "main" ? cls["item--active"] : ""}`}
+            onClick={() => setNavSection("main")}
+          >
             <span className={cls["sider__nav-icon"]}>
               <img src={statistickIcon} alt="" />{" "}
             </span>
             Главная/Статистика
           </li>
-          <li className={cls["sider__nav-item"]}>
+          <li
+            className={`${cls["sider__nav-item"]} ${navSection === "profile" ? cls["item--active"] : ""}`}
+            onClick={() => setNavSection("profile")}
+          >
             <span className={cls["sider__nav-icon"]}>
               <img src={miniProfileIcon} alt="" />
             </span>

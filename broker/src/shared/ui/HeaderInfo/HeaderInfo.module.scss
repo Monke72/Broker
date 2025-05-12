@@ -1,0 +1,28 @@
+.header__info {
+  padding-inline: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.header__title {
+  padding-right: 20px;
+  font-size: 32px;
+  color: var(--color-text);
+  line-height: 1;
+  padding-block: 45px;
+  font-family: var(--font-family-bold);
+  font-weight: 100;
+}
+.header__line {
+  height: 20px;
+  width: 100%;
+  background-color: rgb(235, 235, 235);
+  border-block: 1px solid rgb(230, 230, 230);
+}

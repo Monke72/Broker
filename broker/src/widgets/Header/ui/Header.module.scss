@@ -1,0 +1,99 @@
+.header {
+  background-color: var(--color-text);
+  white-space: nowrap;
+  max-height: 100px;
+  width: 100%;
+  overflow: hidden;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: 60px;
+    border-right: 1px solid rgb(76, 84, 99);
+
+    &-manager {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right: 40px;
+      &__u {
+        color: var(--color-blue-accent);
+        font-size: 12px;
+      }
+      &__name {
+        color: var(--color-light);
+        font-size: 18px;
+      }
+      &__status {
+        color: var(--color-green);
+        display: flex;
+      }
+      &__image {
+        padding-right: 14px;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      padding-inline: 60px;
+      align-items: center;
+      padding-block: 22px;
+      border-inline: 1px solid rgb(76, 84, 99);
+
+      &__search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 45px;
+        margin-right: 5vw;
+        max-width: 640px;
+        width: 100%;
+        input {
+          padding: 14px 40px;
+          max-height: 45px;
+          border-radius: 5px 0 0 5px;
+          width: 100%;
+        }
+      }
+      &__salary {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+        &-time {
+          color: var(--color-light);
+          white-space: nowrap;
+        }
+        &-quantity {
+          display: flex;
+          justify-content: end;
+          color: var(--color-blue-light);
+          font-size: var(--font-size-xxl);
+          font-family: var(--font-family-main);
+          font-weight: 100;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  &__top-reg {
+    font-size: 16px;
+    color: var(--color-light);
+    font-family: var(--font-family-bold);
+    display: flex;
+    align-items: center;
+    padding-inline: 40px;
+  }
+}
+.header__search-button {
+  background-color: var(--color-blue-light);
+  padding: 15px 26px;
+  border-radius: 0 5px 5px 0;
+  max-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

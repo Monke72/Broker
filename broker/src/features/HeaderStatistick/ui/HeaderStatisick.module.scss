@@ -1,0 +1,52 @@
+.stat {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__calendar {
+    display: flex;
+    align-items: center;
+    margin-inline: auto;
+    padding-right: 10px;
+    gap: 10px;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
+    border-left: 1px solid rgb(233, 233, 233);
+    gap: 22px;
+    padding-inline: 20px;
+    justify-content: space-between;
+  }
+
+  &__info {
+    font-size: 14px;
+    max-width: 100px;
+    font-weight: 100;
+    line-height: 1.1;
+  }
+  &__title {
+    font-size: 22px;
+    font-weight: 100;
+  }
+}
+.active {
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-xxl);
+  color: var(--color-blue-light);
+  font-weight: 100;
+  line-height: 1;
+}
+.ant-picker-suffix {
+  font-size: 18px;
+}
+.stat__picker {
+  color: rgba(59, 67, 83, 0.5);
+  font-weight: 600;
+}
