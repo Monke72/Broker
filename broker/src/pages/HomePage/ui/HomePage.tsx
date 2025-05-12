@@ -6,6 +6,7 @@ import NotFound from "@shared/ui/NotFoundPage/NotFound";
 import { useState } from "react";
 import Header from "@widgets/Header/ui/Header";
 import HeaderStatisick from "@features/HeaderStatistick/ui/HeaderStatisick";
+import StatistickAll from "@widgets/StatistickAll/ui/StatistickAll";
 export type NavSectionType = "main" | "profile";
 const HomePage: FC = () => {
   const entry = useAppSelector((state) => state.userReg.entry);
@@ -20,6 +21,7 @@ const HomePage: FC = () => {
           <div className={cls.home__main}>
             <Header />
             <HeaderStatisick />
+            <StatistickAll />
           </div>
         </section>
       )}

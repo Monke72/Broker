@@ -1,0 +1,27 @@
+.all {
+  &__header {
+  }
+
+  &__list {
+    display: grid;
+    padding-inline: 60px;
+    border-bottom: 1px solid var(--color-gray);
+    justify-content: space-between;
+    padding-block: 20px;
+    font-weight: 700;
+    grid-auto-flow: column;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr 1fr 0.5fr;
+    white-space: nowrap;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    &-date {
+      justify-content: start;
+    }
+    &-profit {
+      justify-content: end;
+    }
+  }
+}

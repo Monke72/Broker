@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../../../features/LoginForm/model/slice";
+import { traiderSliceReduscer } from "@entities/Traid";
 
 import persistConfig from "@shared/config/peristConfig";
 import {
@@ -18,6 +19,7 @@ const persistedUserReducer = persistReducer(persistConfig, userReducer);
 const store = configureStore({
   reducer: {
     userReg: persistedUserReducer,
+    traiders: traiderSliceReduscer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
