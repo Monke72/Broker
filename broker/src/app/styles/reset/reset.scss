@@ -202,3 +202,6 @@ button {
 button:focus {
   outline: none;
 }
+:where(.css-dev-only-do-not-override-18afz5u).ant-picker .ant-picker-suffix {
+  font-size: 18px;
+}
