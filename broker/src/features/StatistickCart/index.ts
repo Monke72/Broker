@@ -1,2 +1,3 @@
 import StatistickCart from "./ui/StatistickCart";
-export default StatistickCart;
+import { refactorArray } from "./lib/refactorArray";
+export { StatistickCart, refactorArray };

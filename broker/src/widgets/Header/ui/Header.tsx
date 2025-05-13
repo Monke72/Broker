@@ -2,8 +2,11 @@ import menegerIcon from "@shared/assets/icons/mianProfileIcon.svg";
 import searchIcon from "@shared/assets/icons/searchIcon.svg";
 import statusOnline from "@shared/assets/icons/statusOnline.svg";
 import cls from "./Header.module.scss";
+import { useAppSelector } from "@shared/hooks/StoreHooks/StoreHooks";
+import { sumKey } from "@entities/Traid";
 
 const Header = () => {
+  const date = useAppSelector((state) => state.traiders.data);
   return (
     <header className={cls["header"]}>
       <div className={cls["header__top"]}>
@@ -33,7 +36,9 @@ const Header = () => {
             <div className={cls["header__top-info__salary-time"]}>
               Заработок за неделю
             </div>
-            <h4 className={cls["header__top-info__salary-quantity"]}>315$</h4>
+            <h4 className={cls["header__top-info__salary-quantity"]}>
+              {sumKey(date, "revenue").toFixed(0)}$
+            </h4>
           </div>
         </div>
         <div className={cls["header__top-reg"]}>RU</div>
