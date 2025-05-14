@@ -3,8 +3,7 @@
   white-space: nowrap;
   max-height: 100px;
   width: 100%;
-  overflow: hidden;
-  height: 150px;
+
   &__top {
     display: flex;
     justify-content: space-between;
@@ -42,6 +41,7 @@
       align-items: center;
       padding-block: 22px;
       border-inline: 1px solid rgb(76, 84, 99);
+      height: 100px;
 
       &__search {
         display: flex;

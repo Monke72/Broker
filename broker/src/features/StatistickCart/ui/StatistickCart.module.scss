@@ -1,3 +1,5 @@
+@use "./../../../app/styles/mixins/mixins" as *;
+
 .cart {
   background-color: rgb(252, 252, 252);
   &__list {
@@ -13,6 +15,7 @@
     white-space: nowrap;
     display: flex;
     justify-content: center;
+    position: relative;
   }
 
   &__date {
@@ -51,4 +54,44 @@
 }
 .active {
   color: var(--color-blue-light);
+}
+.active__traid .active__span {
+  position: relative;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+  color: var(--color-blue-light);
+  border-bottom: 3px dotted var(--color-blue-light);
+  cursor: pointer;
+  @include hover {
+    opacity: 0.6;
+  }
+}
+.traid {
+  &__action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2.5px dotted var(--color-gray);
+  }
+  &__info {
+    position: absolute;
+    width: 250px;
+    background-color: #fff;
+    padding: px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 111;
+    box-shadow: 5px 5px 25px 0px rgba(0, 0, 0, 0.25);
+    padding: 14px 14px 32px 28px;
+  }
+  &__num {
+  }
+  &__icon {
+    color: var(--color-gray);
+  }
+  &__close {
+  }
 }
