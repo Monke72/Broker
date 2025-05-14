@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/homepage" element={<HomePage />} />
-        <Route path="/" element={<RegistrPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/reg" element={<RegistrPage />} />
         <Route path="*" element={<NotFound error={404} />} />
       </Routes>
     </>

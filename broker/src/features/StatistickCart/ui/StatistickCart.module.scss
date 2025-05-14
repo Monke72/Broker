@@ -56,7 +56,6 @@
   color: var(--color-blue-light);
 }
 .active__traid .active__span {
-  position: relative;
   width: 10px;
   display: flex;
   justify-content: center;
@@ -73,19 +72,22 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2.5px dotted var(--color-gray);
+    width: 100%;
   }
   &__info {
     position: absolute;
     width: 250px;
     background-color: #fff;
-    padding: px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    z-index: 111;
+    z-index: 120;
     box-shadow: 5px 5px 25px 0px rgba(0, 0, 0, 0.25);
-    padding: 14px 14px 32px 28px;
+    padding: 0px 28px 32px 28px;
+    align-items: end;
+    left: 80px;
+    top: -55px;
   }
   &__num {
   }
@@ -93,5 +95,8 @@
     color: var(--color-gray);
   }
   &__close {
+    position: relative;
+    top: 10px;
+    left: 15px;
   }
 }

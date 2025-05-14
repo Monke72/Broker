@@ -16,6 +16,11 @@ const StatistickAll = () => {
   }, [dispatch]);
 
   const { data, isLoading } = useAppSelector((state) => state.traiders);
+  const filterByTraiders = useAppSelector(
+    (state) => state.filterArray.filterArray
+  );
+  console.log(filterByTraiders);
+  const renderArray = filterByTraiders.length > 0 ? filterByTraiders : data;
 
   const monthArray = getMatch(data, 2);
 
@@ -40,7 +45,7 @@ const StatistickAll = () => {
         </ul>
 
         <div className={cls["all__cart-wrapper"]}>
-          {data.map((el, i) => (
+          {renderArray.map((el, i) => (
             <StatistickCart key={i} data={el} />
           ))}
         </div>

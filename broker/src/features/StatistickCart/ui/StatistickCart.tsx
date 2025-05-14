@@ -60,8 +60,8 @@ const StatistickCart = ({ data }: ICart) => {
               <button className={cls.traid__close} onClick={closeTraidersCart}>
                 <CloseOutlined className={cls.traid__icon} />
               </button>
-              {traders.map((el) => (
-                <li className={cls.traid__action}>
+              {traders.map((el, i) => (
+                <li key={i} className={cls.traid__action}>
                   <div className={cls.traid__title}>ID</div>
                   <div className={cls.traid__num}>{el.id}</div>
                 </li>

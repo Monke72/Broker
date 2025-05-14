@@ -13,6 +13,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import cartFilterReducer from "@features/CartFilter/model/slice";
 
 const persistedUserReducer = persistReducer(persistConfig, userReducer);
 
@@ -20,6 +21,7 @@ const store = configureStore({
   reducer: {
     userReg: persistedUserReducer,
     traiders: traiderSliceReduscer,
+    filterArray: cartFilterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

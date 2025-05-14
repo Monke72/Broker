@@ -48,7 +48,7 @@ const RegistrMenu: FC = () => {
       dispatch(setMailReg(email));
       dispatch(setPasswordReg(password));
       dispatch(setEntry(true));
-      navigate("/homepage", { replace: true }); //переходим на главную страницу и запрещаем переход назад
+      navigate("/", { replace: true }); //переходим на главную страницу и запрещаем переход назад
     }
   };
 
