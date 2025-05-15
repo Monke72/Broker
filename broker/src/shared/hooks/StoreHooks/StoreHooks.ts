@@ -6,7 +6,7 @@ import {
 import type {
   RootState,
   AppDispatch,
-} from "@app/Providers/StoreProvider/store";
+} from "@app/Providers/StoreProvider/store/store";
 
 // Кастомные хуки с типами
 export const useAppDispatch: () => AppDispatch = useDispatch;

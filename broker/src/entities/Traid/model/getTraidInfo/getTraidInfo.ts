@@ -11,7 +11,7 @@ export const fetchData = createAsyncThunk<
 >("data/fetchData", async (_, thunkAPI) => {
   try {
     const res = await axios.get<BrokerStat[]>(
-      "https://6821e49db342dce8004c3c69.mockapi.io/broker"
+      "https://6821e49db342dce8004c3c69.mockapi.io/broker",
     );
     return res.data;
   } catch (error) {

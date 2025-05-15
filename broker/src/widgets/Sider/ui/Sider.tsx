@@ -15,16 +15,13 @@ import {
   setMailReg,
   setPasswordReg,
 } from "@features/LoginForm/model/slice";
-import { NavSectionType } from "@pages/HomePage/ui/HomePage";
+
 import React from "react";
+import { setSection } from "@features/SliderSections/model/sliderSectionsSlice";
 
-interface ISider {
-  navSection: NavSectionType;
-  setNavSection: React.Dispatch<React.SetStateAction<NavSectionType>>;
-}
-
-const Sider = ({ navSection, setNavSection }: ISider) => {
+const Sider = () => {
   const userMail = useAppSelector((state) => state.userReg.mail);
+  const navSection = useAppSelector((state) => state.navSection.section);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -34,6 +31,7 @@ const Sider = ({ navSection, setNavSection }: ISider) => {
     dispatch(setMailReg(""));
     dispatch(setPasswordReg(""));
     dispatch(setEntry(false));
+    dispatch(setSection("main"));
   };
 
   return (
@@ -70,7 +68,7 @@ const Sider = ({ navSection, setNavSection }: ISider) => {
         <ul className={cls["sider__nav-list"]}>
           <li
             className={`${cls["sider__nav-item"]} ${navSection === "main" ? cls["item--active"] : ""}`}
-            onClick={() => setNavSection("main")}
+            onClick={() => dispatch(setSection("main"))}
           >
             <span className={cls["sider__nav-icon"]}>
               <img src={statistickIcon} alt="" />{" "}
@@ -79,7 +77,7 @@ const Sider = ({ navSection, setNavSection }: ISider) => {
           </li>
           <li
             className={`${cls["sider__nav-item"]} ${navSection === "profile" ? cls["item--active"] : ""}`}
-            onClick={() => setNavSection("profile")}
+            onClick={() => dispatch(setSection("profile"))}
           >
             <span className={cls["sider__nav-icon"]}>
               <img src={miniProfileIcon} alt="" />

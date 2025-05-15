@@ -56,6 +56,7 @@ const HeaderStatisick = () => {
 
     const start = dayjs(dateStart, "DD.MM.YYYY").startOf("day");
     const end = dayjs(dateFinish, "DD.MM.YYYY").endOf("day");
+    console.log(start);
 
     const filtered = date.filter((item) => {
       const itemDate = dayjs(item.date, "DD.MM.YYYY");
@@ -77,7 +78,7 @@ const HeaderStatisick = () => {
             className={cls["stat__picker"]}
             onChange={onChangeStart}
             value={dateStart ? dayjs(dateStart, "DD.MM.YYYY") : null}
-            placeholder="Начало"
+            placeholder={minDate ? minDate.format("DD.MM.YYYY") : null}
             defaultPickerValue={minDate ?? undefined}
           />
           <span> - </span>
@@ -88,7 +89,7 @@ const HeaderStatisick = () => {
             className={cls["stat__picker"]}
             size="large"
             value={dateFinish ? dayjs(dateFinish, "DD.MM.YYYY") : null}
-            placeholder="Конец"
+            placeholder={maxDate ? maxDate.format("DD.MM.YYYY") : null}
             defaultPickerValue={maxDate ?? undefined}
           />
         </div>

@@ -5,18 +5,17 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "@shared/hooks/StoreHooks/StoreHooks";
-import { useState } from "react";
 import Header from "@widgets/Header/ui/Header";
 import HeaderStatisick from "@features/HeaderStatistick/ui/HeaderStatisick";
 import StatistickAll from "@widgets/StatistickAll/ui/StatistickAll";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "@entities/Traid";
 
-export type NavSectionType = "main" | "profile";
 const HomePage: FC = () => {
   const entry = useAppSelector((state) => state.userReg.entry);
+  const navSection = useAppSelector((state) => state.navSection.section);
+  console.log(navSection);
 
-  const [navSection, setNavSection] = useState<NavSectionType>("main");
   const navigate = useNavigate();
   const loading = useAppSelector((state) => state.traiders.isLoading);
 
@@ -34,16 +33,19 @@ const HomePage: FC = () => {
     <>
       {entry && (
         <section className={cls.home}>
-          <Sider navSection={navSection} setNavSection={setNavSection} />
-          {loading ? (
+          <Sider />
+          {navSection === "main" && loading && (
             <div className={cls.home__overlay}></div>
-          ) : (
+          )}
+          {navSection === "main" && !loading && (
             <div className={cls.home__main}>
               <Header />
               <HeaderStatisick />
               <StatistickAll />
             </div>
           )}
+
+          {navSection === "profile" && <h1>Profuiele</h1>}
         </section>
       )}
     </>
