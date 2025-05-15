@@ -1,26 +1,37 @@
 import { refactorArray, StatistickCart } from "@features/StatistickCart";
 import cls from "./StatistickAll.module.scss";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "@shared/hooks/StoreHooks/StoreHooks";
+import { useAppSelector } from "@shared/hooks/StoreHooks/StoreHooks";
 import { useEffect } from "react";
-import { fetchData } from "@entities/Traid/index";
 import { getMatch } from "@shared/utils/getMatch";
 
 const StatistickAll = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
-
-  const { data, isLoading } = useAppSelector((state) => state.traiders);
+  const { data } = useAppSelector((state) => state.traiders);
   const filterByTraiders = useAppSelector(
     (state) => state.filterArray.filterArray
   );
-  console.log(filterByTraiders);
-  const renderArray = filterByTraiders.length > 0 ? filterByTraiders : data;
+  const filterTraidersByData = useAppSelector(
+    (state) => state.filterByDate.filterData
+  );
+
+  function getData() {
+    // Если оба фильтра пусты — вернуть полный список
+    if (!filterByTraiders.length && !filterTraidersByData.length) return data;
+
+    // Если только фильтр по трейдерам — вернуть его
+    if (filterByTraiders.length && !filterTraidersByData.length)
+      return filterByTraiders;
+
+    // Если только фильтр по дате — вернуть его
+    if (!filterByTraiders.length && filterTraidersByData.length)
+      return filterTraidersByData;
+    // Если есть оба — вернуть пересечение по id (или другому уникальному ключу)
+    return filterTraidersByData.filter((item) =>
+      filterByTraiders.some((el) => el.id === item.id)
+    );
+  }
+  useEffect(() => {
+    getData();
+  }, [filterByTraiders, filterTraidersByData]);
 
   const monthArray = getMatch(data, 2);
 
@@ -45,15 +56,21 @@ const StatistickAll = () => {
         </ul>
 
         <div className={cls["all__cart-wrapper"]}>
-          {renderArray.map((el, i) => (
+          {getData().map((el, i) => (
             <StatistickCart key={i} data={el} />
           ))}
         </div>
       </div>
 
       <div className={cls["all__footer"]}>
-        <StatistickCart data={refactorArray(monthArray, "Март")} />
-        <StatistickCart data={refactorArray(data, "За все время")} />
+        <StatistickCart
+          hiddenTraider
+          data={refactorArray(monthArray, "Март")}
+        />
+        <StatistickCart
+          hiddenTraider
+          data={refactorArray(data, "За все время")}
+        />
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ import {
   setPasswordReg,
 } from "@features/LoginForm/model/slice";
 import { NavSectionType } from "@pages/HomePage/ui/HomePage";
+import React from "react";
 
 interface ISider {
   navSection: NavSectionType;

@@ -4,8 +4,9 @@ import { CloseOutlined } from "@ant-design/icons";
 import { useState } from "react";
 interface ICart {
   data: BrokerStat;
+  hiddenTraider?: boolean;
 }
-const StatistickCart = ({ data }: ICart) => {
+const StatistickCart = ({ data, hiddenTraider }: ICart) => {
   const [tradersCartVis, setTraidersCartVis] = useState<boolean>(false);
   const {
     date,
@@ -22,7 +23,7 @@ const StatistickCart = ({ data }: ICart) => {
   } = data;
 
   const openTraindersCart: React.MouseEventHandler<HTMLSpanElement> = () => {
-    setTraidersCartVis(true);
+    setTraidersCartVis((prev) => !prev);
   };
   const closeTraidersCart: React.MouseEventHandler<HTMLButtonElement> = () => {
     setTraidersCartVis(false);
@@ -46,7 +47,7 @@ const StatistickCart = ({ data }: ICart) => {
           {ftd}
         </li>
         <li
-          className={`${cls["cart__item"]} ${cls["cart__traid"]} ${traders_count ? cls.active__traid : ""}`}
+          className={`${cls["cart__item"]} ${cls["cart__traid"]} ${traders_count && !hiddenTraider ? cls.active__traid : ""}`}
         >
           <span className={cls.active__span}>
             {traders_count ? (
@@ -55,7 +56,7 @@ const StatistickCart = ({ data }: ICart) => {
               <span>-</span>
             )}
           </span>
-          {tradersCartVis && (
+          {tradersCartVis && !hiddenTraider && (
             <ul className={cls.traid__info}>
               <button className={cls.traid__close} onClick={closeTraidersCart}>
                 <CloseOutlined className={cls.traid__icon} />
@@ -87,7 +88,6 @@ const StatistickCart = ({ data }: ICart) => {
           <span>{revenue ? `+$ ${revenue}` : <span>0</span>}</span>
         </li>
       </ul>
-      {/* <span className={cls["cart__traiders"]}>{traders[1].id}</span> */}
     </div>
   );
 };

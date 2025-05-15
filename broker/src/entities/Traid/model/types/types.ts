@@ -19,6 +19,7 @@ export interface BrokerStat {
   dynamics: number;
   revenue: number;
   traders: Trader[];
+  id: number;
 }
 
 export type BrokerStatsArray = BrokerStat[];

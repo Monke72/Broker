@@ -7,19 +7,23 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "@shared/hooks/StoreHooks/StoreHooks";
-import {
-  openNotification,
-  notificationContextHolder,
-} from "@shared/utils/notificationUtils";
+
+import { notification } from "antd";
 
 import { sumKey } from "@entities/Traid";
 import { useState } from "react";
-import { setArray } from "@features/CartFilter/model/slice";
+import { setArray } from "@features/CartFilter/model/inputFilterslice";
 
 const Header = () => {
+  const [api, contextHolder] = notification.useNotification();
   const [searchValue, setSearchValue] = useState<string>("");
   const data = useAppSelector((state) => state.traiders.data);
   const dispatch = useAppDispatch();
+  const dataFilterByData = useAppSelector(
+    (state) => state.filterByDate.filterData
+  );
+  console.log(dataFilterByData);
+
   //события по инпуту
   const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -32,19 +36,35 @@ const Header = () => {
   const formToFilterHandler = () => {
     if (!searchValue.length) {
       dispatch(setArray(data));
-      openNotification("topLeft");
+      api.info({
+        message: "Введите значение для поиска",
+        placement: "topLeft",
+      });
       return;
     }
-    const result = data.filter((traid) =>
+
+    const baseArray = dataFilterByData.length ? dataFilterByData : data;
+
+    const result = baseArray.filter((traid) =>
       traid.traders.some((trader) => trader.id.includes(searchValue))
     );
+
+    if (!result.length) {
+      dispatch(setArray(data));
+      api.info({
+        message: "Ничего не найдено",
+        placement: "topLeft",
+      });
+      return;
+    }
+
     dispatch(setArray(result));
   };
 
   const date = useAppSelector((state) => state.traiders.data);
   return (
     <header className={cls["header"]}>
-      {notificationContextHolder}
+      {contextHolder}
       <div className={cls["header__top"]}>
         <div className={cls["header__top-manager"]}>
           <div className={cls["header__top-manager__image"]}>

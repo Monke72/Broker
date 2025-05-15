@@ -4,58 +4,93 @@ import dayjs from "dayjs";
 import cls from "./HeaderStatisick.module.scss";
 import type { DatePickerProps } from "antd";
 import { useEffect, useState } from "react";
-import { dateCompare } from "@shared/utils/dateCompare";
-import { useAppSelector } from "@shared/hooks/StoreHooks/StoreHooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "@shared/hooks/StoreHooks/StoreHooks";
 import { sumKey } from "@entities/Traid";
+import minMax from "dayjs/plugin/minMax";
+import isBetween from "dayjs/plugin/isBetween";
+import { setTraidersByDate } from "@features/CartFilter/model/dateFilterSlice";
+dayjs.extend(minMax);
+dayjs.extend(isBetween);
 
 const HeaderStatisick = () => {
-  const [dateStart, setDateStart] = useState<string | string[]>("");
-  const [dateFinish, setDateFinish] = useState<string | string[]>("");
-  const [dateError, setDateError] = useState<boolean>(false);
-  const disabledDate = (current) => {
-    // Запретить все даты после сегодняшнего дня
-    return current && current > dayjs().endOf("day");
-  };
+  const [dateStart, setDateStart] = useState<string>("");
+  const [dateFinish, setDateFinish] = useState<string>("");
 
-  //обработчики календаря
-  const onChangeStart: DatePickerProps["onChange"] = (date, dateString) => {
-    setDateStart(dateString);
-  };
-  const onChangeFinish: DatePickerProps["onChange"] = (date, dateString) => {
-    setDateFinish(dateString);
-  };
-  useEffect(() => {
-    if (dateStart === "" || dateFinish === "") return;
-    if (typeof dateStart === "string" && typeof dateFinish === "string") {
-      const isLater = dateCompare({ date1: dateStart, date2: dateFinish });
-      setDateError(!isLater); // Пример: ошибка, если дата начала не раньше даты окончания
-    }
-  }, [dateFinish, dateStart]);
   const date = useAppSelector((state) => state.traiders.data);
-  const revenue = sumKey(date, "revenue");
+  const dispatch = useAppDispatch();
 
+  //даты
+  const onChangeStart: DatePickerProps["onChange"] = (_, dateString) => {
+    setDateStart(dateString as string);
+  };
+  const onChangeFinish: DatePickerProps["onChange"] = (_, dateString) => {
+    setDateFinish(dateString as string);
+  };
+
+  const parsedDates = date.map((item) => dayjs(item.date, "DD.MM.YYYY"));
+
+  const minDate = parsedDates.length ? dayjs.min(parsedDates) : null;
+  const maxDate = parsedDates.length ? dayjs.max(parsedDates) : null;
+
+  const disableStartDate = (current: dayjs.Dayjs) => {
+    const finish = dateFinish ? dayjs(dateFinish, "DD.MM.YYYY") : maxDate;
+    return current < minDate.startOf("day") || current > finish.endOf("day");
+  };
+  const disableEndDate = (current: dayjs.Dayjs) => {
+    const start = dateStart ? dayjs(dateStart, "DD.MM.YYYY") : minDate;
+    return current < start.startOf("day") || current > maxDate.endOf("day");
+  };
+
+  useEffect(() => {
+    // Если оба значения пустые — очищаем фильтр
+    if (!dateStart && !dateFinish) {
+      dispatch(setTraidersByDate([]));
+      return;
+    }
+
+    // Если одно из значений отсутствует — не фильтруем
+    if (!dateStart || !dateFinish) return;
+
+    const start = dayjs(dateStart, "DD.MM.YYYY").startOf("day");
+    const end = dayjs(dateFinish, "DD.MM.YYYY").endOf("day");
+
+    const filtered = date.filter((item) => {
+      const itemDate = dayjs(item.date, "DD.MM.YYYY");
+      return itemDate.isBetween(start, end, null, "[]");
+    });
+
+    dispatch(setTraidersByDate(filtered));
+  }, [dateStart, dateFinish, date, dispatch]);
+
+  const revenue = sumKey(date, "revenue");
   return (
     <HeaderInfo title="Статистика">
       <div className={cls["stat"]}>
         <div className={cls["stat__calendar"]}>
           <DatePicker
-            disabledDate={disabledDate}
+            format="DD.MM.YYYY"
+            disabledDate={disableStartDate}
             size="large"
             className={cls["stat__picker"]}
             onChange={onChangeStart}
+            value={dateStart ? dayjs(dateStart, "DD.MM.YYYY") : null}
+            placeholder="Начало"
+            defaultPickerValue={minDate ?? undefined}
           />
           <span> - </span>
           <DatePicker
+            format="DD.MM.YYYY"
+            disabledDate={disableEndDate}
             onChange={onChangeFinish}
-            disabledDate={disabledDate}
             className={cls["stat__picker"]}
             size="large"
+            value={dateFinish ? dayjs(dateFinish, "DD.MM.YYYY") : null}
+            placeholder="Конец"
+            defaultPickerValue={maxDate ?? undefined}
           />
-          {dateError && (
-            <span className={cls["stat__picker-error"]}>
-              Введите корректный интервал
-            </span>
-          )}
         </div>
 
         <ul className={cls["stat__list"]}>

@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../../../features/LoginForm/model/slice";
 import { traiderSliceReduscer } from "@entities/Traid";
+import tradersByDateReducer from "@features/CartFilter/model/dateFilterSlice";
 
 import persistConfig from "@shared/config/peristConfig";
 import {
@@ -13,7 +14,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import cartFilterReducer from "@features/CartFilter/model/slice";
+import cartFilterReducer from "@features/CartFilter/model/inputFilterslice";
 
 const persistedUserReducer = persistReducer(persistConfig, userReducer);
 
@@ -22,6 +23,7 @@ const store = configureStore({
     userReg: persistedUserReducer,
     traiders: traiderSliceReduscer,
     filterArray: cartFilterReducer,
+    filterByDate: tradersByDateReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
