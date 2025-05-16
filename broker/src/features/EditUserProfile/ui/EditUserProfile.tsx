@@ -49,22 +49,31 @@ const EditUserProfile = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<IFormProfile>({});
+  } = useForm<IFormProfile>({
+    defaultValues: {
+      mail: mail || "",
+      password: password || "",
+      name: name || "",
+      tel: tel || "",
+      tg: tg || "",
+      source: traffic || "",
+    },
+  });
 
-  const valMail = (data) => {
+  const valMail = (data: string): boolean => {
     return validateEmail(data);
   };
-  const valname = (data) => {
+  const valname = (data: string): boolean | string => {
     return validateName(data);
   };
-  const valPassword = (data: string) => {
+  const valPassword = (data: string): boolean | string => {
     console.log(passwordValid(data));
     return passwordValid(data);
   };
-  const valTel = (data) => {
+  const valTel = (data: string): boolean | string => {
     return validatePhone(data);
   };
-  const valTg = (data) => {
+  const valTg = (data: string): boolean | string => {
     console.log(validateTelegram(data));
     return validateTelegram(data);
   };
@@ -98,7 +107,6 @@ const EditUserProfile = () => {
           {...register("mail", { required: true, validate: valMail })}
           aria-invalid={errors.mail ? true : false}
           placeholder="E-mail"
-          defaultValue={mail}
         />
 
         <div className={cls.wrapper__gap}>
@@ -110,7 +118,6 @@ const EditUserProfile = () => {
             className={cls.form__def}
             {...register("name", { validate: valname })}
             placeholder="Имя"
-            defaultValue={name ? name : ""}
           />
           <InputForm
             inputType={InputType.Secondary}
@@ -120,7 +127,6 @@ const EditUserProfile = () => {
             {...register("password", { required: true, validate: valPassword })}
             placeholder="Пароль"
             password
-            defaultValue={password}
           />
           <InputForm
             inputType={InputType.Secondary}
@@ -130,7 +136,6 @@ const EditUserProfile = () => {
             className={cls.form__def}
             {...register("tel", { validate: valTel })}
             placeholder="Телефон"
-            defaultValue={tel ? tel : ""}
           />
           <InputForm
             inputType={InputType.Secondary}
@@ -140,7 +145,6 @@ const EditUserProfile = () => {
             className={cls.form__def}
             {...register("tg", { validate: valTg })}
             placeholder="Телеграм"
-            defaultValue={tg ? tg : ""}
           />
         </div>
 
@@ -155,7 +159,6 @@ const EditUserProfile = () => {
             placeholder="Источник трафика"
             readOnly
             onClick={() => setOpenSource((prev) => !prev)}
-            defaultValue={traffic ? traffic : ""}
           >
             <button
               className={cls["form__list-handler"]}
