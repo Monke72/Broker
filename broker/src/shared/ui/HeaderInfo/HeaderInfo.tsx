@@ -1,7 +1,7 @@
 import cls from "./HeaderInfo.module.scss";
 interface IHeaderInfo {
-  title: string;
-  children: React.ReactNode;
+  title?: string;
+  children?: React.ReactNode;
 }
 
 const HeaderInfo = ({ title, children }: IHeaderInfo) => {
@@ -11,7 +11,6 @@ const HeaderInfo = ({ title, children }: IHeaderInfo) => {
         <h2 className={cls["header__title"]}>{title}</h2>
         <div className={cls["header__info-wrapper"]}>{children}</div>
       </div>
-      <span className={cls.header__line}></span>
     </>
   );
 };

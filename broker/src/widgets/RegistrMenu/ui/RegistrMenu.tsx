@@ -21,8 +21,7 @@ const RegistrMenu: FC = () => {
   const [agree, setAgree] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  //submit form
-  const [visible, setVisible] = useState<boolean>(false);
+
   //erros form
   const [emailError, setEmailError] = useState<string>("");
   const [passwordError, setPasswordError] = useState<string>("");
@@ -40,7 +39,7 @@ const RegistrMenu: FC = () => {
     setPasswordError(
       passwordIsValid
         ? ""
-        : "Пароль должен содержать 8 символов, цифры и заглавные буквы",
+        : "Пароль должен содержать 8 символов, цифры и заглавные буквы"
     );
     setAgreeError(!agreeIsValid);
 
@@ -79,13 +78,10 @@ const RegistrMenu: FC = () => {
         className={cls["menu__input__pass"]}
         iconClassName={cls["menu__icon-pass"]}
         icon={passwordIcon}
-        type={visible ? "" : "password"}
         placeholder="Пароль"
         onChange={(e) => changePassword(e)}
         value={password}
         password
-        visible={visible}
-        setVisible={setVisible}
         error={passwordError}
       />
       <div className={cls.field}>

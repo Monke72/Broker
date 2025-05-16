@@ -1,10 +1,8 @@
 .input {
-  padding: 20px 20px 20px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  width: 330px;
 }
 
 .icon {
@@ -15,6 +13,7 @@
 .input__wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
   &:focus-visible,
   &:focus {
     outline: none;
@@ -44,6 +43,8 @@
   margin-top: 10px;
   background-color: var(--color-blue);
   appearance: none;
+  width: 330px;
+  padding: 20px 20px 20px 40px;
   &:focus-visible,
   &:focus {
     outline: none;
@@ -53,8 +54,12 @@
 }
 
 .input.secondary {
-  border: 2px solid #4caf50;
-  background-color: #66bb6a;
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 5px;
+  background: #f8f8f8;
+  padding: 16px 40px;
+  width: 100%;
+  line-height: 1;
 }
 
 .input.tertiary {

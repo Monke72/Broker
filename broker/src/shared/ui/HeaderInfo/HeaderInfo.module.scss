@@ -3,6 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  white-space: nowrap;
+  background-color: var(--color-light);
+  margin-bottom: 36px;
 
   &-wrapper {
     display: flex;
@@ -19,10 +22,4 @@
   padding-block: 45px;
   font-family: var(--font-family-bold);
   font-weight: 100;
-}
-.header__line {
-  height: 20px;
-  width: 100%;
-  background-color: rgb(235, 235, 235);
-  border-block: 1px solid rgb(230, 230, 230);
 }

@@ -15,4 +15,5 @@ export interface IInputForm extends InputHTMLAttributes<HTMLInputElement> {
   visible?: boolean;
   setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
   error?: string;
+  children?: React.ReactNode;
 }

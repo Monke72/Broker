@@ -10,11 +10,7 @@ import starActive from "@shared/assets/icons/starActive.svg";
 import statistickIcon from "@shared/assets/icons/stat.svg";
 import miniProfileIcon from "@shared/assets/icons/profileNav.svg";
 import { useNavigate } from "react-router-dom";
-import {
-  setEntry,
-  setMailReg,
-  setPasswordReg,
-} from "@features/LoginForm/model/slice";
+import { deleteAll } from "@features/LoginForm/model/slice";
 
 import React from "react";
 import { setSection } from "@features/SliderSections/model/sliderSectionsSlice";
@@ -28,10 +24,7 @@ const Sider = () => {
 
   const handlerExit = () => {
     navigate("/");
-    dispatch(setMailReg(""));
-    dispatch(setPasswordReg(""));
-    dispatch(setEntry(false));
-    dispatch(setSection("main"));
+    dispatch(deleteAll());
   };
 
   return (

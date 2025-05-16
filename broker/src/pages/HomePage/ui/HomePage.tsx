@@ -10,14 +10,15 @@ import HeaderStatisick from "@features/HeaderStatistick/ui/HeaderStatisick";
 import StatistickAll from "@widgets/StatistickAll/ui/StatistickAll";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "@entities/Traid";
+import EditUserProfile from "@features/EditUserProfile/ui/EditUserProfile";
+import HeaderInfo from "@shared/ui/HeaderInfo/HeaderInfo";
 
 const HomePage: FC = () => {
   const entry = useAppSelector((state) => state.userReg.entry);
   const navSection = useAppSelector((state) => state.navSection.section);
-  console.log(navSection);
+  const loading = useAppSelector((state) => state.traiders.isLoading);
 
   const navigate = useNavigate();
-  const loading = useAppSelector((state) => state.traiders.isLoading);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -45,7 +46,15 @@ const HomePage: FC = () => {
             </div>
           )}
 
-          {navSection === "profile" && <h1>Profuiele</h1>}
+          {navSection === "profile" && (
+            <>
+              <div className={cls.home__main}>
+                <Header />
+                <HeaderInfo title="Редактирование профиля" />{" "}
+                <EditUserProfile />
+              </div>
+            </>
+          )}
         </section>
       )}
     </>

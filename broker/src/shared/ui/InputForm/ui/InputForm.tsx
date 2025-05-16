@@ -4,6 +4,7 @@ import { IInputForm } from "../model/types";
 import { InputType } from "../index";
 import { clsx } from "clsx";
 import cls from "./inputForm.module.scss";
+import { useState } from "react";
 
 const InputForm: FC<IInputForm> = ({
   className,
@@ -12,11 +13,11 @@ const InputForm: FC<IInputForm> = ({
   inputType = InputType.Primary,
   iconClassName,
   password,
-  visible,
-  setVisible,
   error,
+  children,
   ...rest
 }) => {
+  const [visible, setVisible] = useState<boolean>(true);
   return (
     <div className={cls.input__wrapper}>
       <div className={cls.input__form}>
@@ -28,10 +29,12 @@ const InputForm: FC<IInputForm> = ({
           />
         )}
         <input
+          type={visible ? "password" : "text"}
           required={required}
-          className={clsx(cls.input, className, cls[inputType])}
+          className={clsx(cls.input, className, cls[`${inputType}`])}
           {...rest}
         />
+        {children}
         {password && (
           <span
             className={cls.input__password}

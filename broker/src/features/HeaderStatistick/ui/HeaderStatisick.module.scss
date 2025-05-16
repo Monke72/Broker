@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  white-space: wrap;
 
   &__calendar {
     position: relative;
