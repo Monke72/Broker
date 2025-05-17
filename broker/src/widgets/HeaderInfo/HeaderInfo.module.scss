@@ -1,11 +1,10 @@
 .header__info {
-  padding-inline: var(--padding-cont);
   display: flex;
   justify-content: space-between;
-  align-items: center;
   white-space: nowrap;
   background-color: var(--color-light);
   margin-bottom: 36px;
+  flex-direction: column;
   @include desktop {
     margin-bottom: 25px;
   }
@@ -14,6 +13,9 @@
     display: flex;
     align-items: center;
     width: 100%;
+    @include tablet {
+      width: unset;
+    }
   }
 }
 
@@ -29,4 +31,21 @@
     font-size: 28px;
     padding-block: 40px;
   }
+  @include tablet {
+    padding-block: 30px;
+  }
+}
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--padding-cont);
+}
+.stat {
+  cursor: pointer;
+  display: flex;
+  padding-block: 20px;
+  padding-inline: var(--padding-cont);
+  border-top: 1px solid var(--color-gray);
+  font-size: 18px;
+  gap: 10px;
 }

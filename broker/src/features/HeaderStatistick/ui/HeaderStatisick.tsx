@@ -1,4 +1,4 @@
-import HeaderInfo from "@shared/ui/HeaderInfo/HeaderInfo";
+import HeaderInfo from "@widgets/HeaderInfo/HeaderInfo";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import cls from "./HeaderStatisick.module.scss";
@@ -12,6 +12,7 @@ import { sumKey } from "@entities/Traid";
 import minMax from "dayjs/plugin/minMax";
 import isBetween from "dayjs/plugin/isBetween";
 import { setTraidersByDate } from "@features/CartFilter/model/dateFilterSlice";
+
 dayjs.extend(minMax);
 dayjs.extend(isBetween);
 
@@ -19,10 +20,13 @@ const HeaderStatisick = () => {
   const [dateStart, setDateStart] = useState<string>("");
   const [dateFinish, setDateFinish] = useState<string>("");
 
-  const date = useAppSelector((state) => state.traiders.data);
+  const fullData = useAppSelector((state) => state.traiders.data);
+  const filteredData = useAppSelector((state) => state.filterByDate.filterData);
+  const date = filteredData.length ? filteredData : fullData;
+
   const dispatch = useAppDispatch();
 
-  //даты
+  // Обработка выбора даты
   const onChangeStart: DatePickerProps["onChange"] = (_, dateString) => {
     setDateStart(dateString as string);
   };
@@ -30,7 +34,7 @@ const HeaderStatisick = () => {
     setDateFinish(dateString as string);
   };
 
-  const parsedDates = date.map((item) => dayjs(item.date, "DD.MM.YYYY"));
+  const parsedDates = fullData.map((item) => dayjs(item.date, "DD.MM.YYYY"));
 
   const minDate = parsedDates.length ? dayjs.min(parsedDates) : null;
   const maxDate = parsedDates.length ? dayjs.max(parsedDates) : null;
@@ -45,30 +49,28 @@ const HeaderStatisick = () => {
   };
 
   useEffect(() => {
-    // Если оба значения пустые — очищаем фильтр
     if (!dateStart && !dateFinish) {
-      dispatch(setTraidersByDate([]));
+      dispatch(setTraidersByDate([])); // сброс фильтра
       return;
     }
 
-    // Если одно из значений отсутствует — не фильтруем
     if (!dateStart || !dateFinish) return;
 
     const start = dayjs(dateStart, "DD.MM.YYYY").startOf("day");
     const end = dayjs(dateFinish, "DD.MM.YYYY").endOf("day");
-    console.log(start);
 
-    const filtered = date.filter((item) => {
+    const filtered = fullData.filter((item) => {
       const itemDate = dayjs(item.date, "DD.MM.YYYY");
       return itemDate.isBetween(start, end, null, "[]");
     });
 
     dispatch(setTraidersByDate(filtered));
-  }, [dateStart, dateFinish, date, dispatch]);
+  }, [dateStart, dateFinish, fullData, dispatch]);
 
   const revenue = sumKey(date, "revenue");
+
   return (
-    <HeaderInfo title="Статистика">
+    <HeaderInfo title="Статистика" stat>
       <div className={cls["stat"]}>
         <div className={cls["stat__calendar"]}>
           <DatePicker
@@ -78,7 +80,7 @@ const HeaderStatisick = () => {
             className={cls["stat__picker"]}
             onChange={onChangeStart}
             value={dateStart ? dayjs(dateStart, "DD.MM.YYYY") : null}
-            placeholder={minDate ? minDate.format("DD.MM.YYYY") : null}
+            placeholder={minDate ? minDate.format("DD.MM.YYYY") : undefined}
             defaultPickerValue={minDate ?? undefined}
           />
           <span> - </span>
@@ -89,7 +91,7 @@ const HeaderStatisick = () => {
             className={cls["stat__picker"]}
             size="large"
             value={dateFinish ? dayjs(dateFinish, "DD.MM.YYYY") : null}
-            placeholder={maxDate ? maxDate.format("DD.MM.YYYY") : null}
+            placeholder={maxDate ? maxDate.format("DD.MM.YYYY") : undefined}
             defaultPickerValue={maxDate ?? undefined}
           />
         </div>

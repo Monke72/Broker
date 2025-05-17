@@ -11,7 +11,7 @@ import StatistickAll from "@widgets/StatistickAll/ui/StatistickAll";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "@entities/Traid";
 import EditUserProfile from "@features/EditUserProfile/ui/EditUserProfile";
-import HeaderInfo from "@shared/ui/HeaderInfo/HeaderInfo";
+import HeaderInfo from "@widgets/HeaderInfo/HeaderInfo";
 
 const HomePage: FC = () => {
   const entry = useAppSelector((state) => state.userReg.entry);
@@ -48,7 +48,8 @@ const HomePage: FC = () => {
           {navSection === "profile" && !loading && (
             <div className={cls.home__main}>
               <Header />
-              <HeaderInfo title="Редактирование профиля" /> <EditUserProfile />
+              <HeaderInfo title="Редактирование профиля" />
+              <EditUserProfile />
             </div>
           )}
         </section>

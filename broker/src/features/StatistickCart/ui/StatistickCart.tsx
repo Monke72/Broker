@@ -5,8 +5,9 @@ import { useState } from "react";
 interface ICart {
   data: BrokerStat;
   hiddenTraider?: boolean;
+  all?: boolean;
 }
-const StatistickCart = ({ data, hiddenTraider }: ICart) => {
+const StatistickCart = ({ data, hiddenTraider, all }: ICart) => {
   const [tradersCartVis, setTraidersCartVis] = useState<boolean>(false);
   const {
     date,
@@ -32,7 +33,11 @@ const StatistickCart = ({ data, hiddenTraider }: ICart) => {
   return (
     <div className={cls["cart"]}>
       <ul className={cls["cart__list"]}>
-        <li className={`${cls["cart__item"]} ${cls["cart__date"]} `}>{date}</li>
+        <li
+          className={`${cls["cart__item"]} ${cls["cart__date"]} ${all ? cls.active : ""}`}
+        >
+          {date}
+        </li>
         <li className={`${cls["cart__item"]} ${cls["cart__transition"]}`}>
           {clicks}
         </li>

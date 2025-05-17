@@ -65,10 +65,12 @@ const StatistickAll = () => {
 
       <div className={cls["all__footer"]}>
         <StatistickCart
+          all
           hiddenTraider
           data={refactorArray(monthArray, "Март")}
         />
         <StatistickCart
+          all
           hiddenTraider
           data={refactorArray(data, "За все время")}
         />
