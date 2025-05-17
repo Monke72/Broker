@@ -7,6 +7,10 @@
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
+  @include desktop {
+    padding: 25px 45px 30px 45px;
+    max-width: 550px;
+  }
 
   color: var(--color-text);
   &__avatar {
@@ -17,6 +21,9 @@
     color: var(--color-text);
     border-bottom: 1px dotted var(--color-text);
     margin-bottom: 36px;
+    @include desktop {
+      margin-bottom: 20px;
+    }
   }
   &__icon {
     top: 15px;
@@ -81,11 +88,18 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 32px 14px;
     padding: 8px 0 32px 0;
+    @include desktop {
+      gap: 11px 14px;
+      padding: 8px 0 11px 0;
+    }
   }
 }
 .ref {
   text-align: center;
   padding-block: 35px;
+  @include desktop {
+    padding: 14px 0 20px 0;
+  }
   &__title {
     font-size: var(--font-size-l);
     opacity: 0.5;

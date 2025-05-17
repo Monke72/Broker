@@ -1,11 +1,14 @@
 .header__info {
-  padding-inline: 60px;
+  padding-inline: var(--padding-cont);
   display: flex;
   justify-content: space-between;
   align-items: center;
   white-space: nowrap;
   background-color: var(--color-light);
   margin-bottom: 36px;
+  @include desktop {
+    margin-bottom: 25px;
+  }
 
   &-wrapper {
     display: flex;
@@ -22,4 +25,8 @@
   padding-block: 45px;
   font-family: var(--font-family-bold);
   font-weight: 100;
+  @include desktop {
+    font-size: 28px;
+    padding-block: 40px;
+  }
 }

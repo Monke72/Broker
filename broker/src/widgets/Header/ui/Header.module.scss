@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-inline: 60px;
+    margin-inline: var(--padding-cont);
     border-right: 1px solid rgb(76, 84, 99);
 
     &-manager {
@@ -16,6 +16,9 @@
       justify-content: center;
       align-items: center;
       padding-right: 40px;
+      @include desktop {
+        padding-right: 20px;
+      }
       &__u {
         color: var(--color-blue-accent);
         font-size: 12px;
@@ -42,6 +45,9 @@
       padding-block: 22px;
       border-inline: 1px solid rgb(76, 84, 99);
       height: 100px;
+      @include desktop {
+        padding-inline: 20px;
+      }
 
       &__search {
         display: flex;
@@ -51,6 +57,9 @@
         margin-right: 5vw;
         max-width: 640px;
         width: 100%;
+        @include desktop {
+          margin-right: 20px;
+        }
         input {
           padding: 14px 40px;
           max-height: 45px;
@@ -90,6 +99,9 @@
     display: flex;
     align-items: center;
     padding-inline: 40px;
+    @include desktop {
+      padding-inline: 30px;
+    }
   }
 }
 .header__search-button {

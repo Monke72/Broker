@@ -19,8 +19,8 @@ const HomePage: FC = () => {
   const loading = useAppSelector((state) => state.traiders.isLoading);
 
   const navigate = useNavigate();
-
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
@@ -35,9 +35,8 @@ const HomePage: FC = () => {
       {entry && (
         <section className={cls.home}>
           <Sider />
-          {navSection === "main" && loading && (
-            <div className={cls.home__overlay}></div>
-          )}
+          {loading && <div className={cls.home__overlay}></div>}
+
           {navSection === "main" && !loading && (
             <div className={cls.home__main}>
               <Header />
@@ -46,14 +45,11 @@ const HomePage: FC = () => {
             </div>
           )}
 
-          {navSection === "profile" && (
-            <>
-              <div className={cls.home__main}>
-                <Header />
-                <HeaderInfo title="Редактирование профиля" />{" "}
-                <EditUserProfile />
-              </div>
-            </>
+          {navSection === "profile" && !loading && (
+            <div className={cls.home__main}>
+              <Header />
+              <HeaderInfo title="Редактирование профиля" /> <EditUserProfile />
+            </div>
           )}
         </section>
       )}

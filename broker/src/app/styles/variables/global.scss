@@ -15,6 +15,16 @@
   --font-size-xl: 18px;
   --font-size-xxl: 36px;
 
+  --padding-cont: 60px;
+
   --font-family-main: "fontLight", sans-serif;
   --font-family-bold: "font__bold", sans-serif;
+
+  --colum-size: 0.7fr 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr 1fr 0.5fr;
+
+  @include desktop {
+    --font-size-xxl: 30px;
+    --padding-cont: 40px;
+    --colum-size: 0.7fr 1fr 1fr 0.4fr 0.8fr 0.8fr 0.8fr 1.2fr 0.8fr 0.5fr;
+  }
 }

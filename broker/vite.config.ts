@@ -19,4 +19,13 @@ export default defineConfig({
       "@entities": path.resolve(__dirname, "src/entities/"),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @use "@shared/styles/mixins" as *;
+        `,
+      },
+    },
+  },
 });

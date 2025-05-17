@@ -32,7 +32,7 @@ const StatistickCart = ({ data, hiddenTraider }: ICart) => {
   return (
     <div className={cls["cart"]}>
       <ul className={cls["cart__list"]}>
-        <li className={`${cls["cart__item"]} ${cls["cart__date"]}`}>{date}</li>
+        <li className={`${cls["cart__item"]} ${cls["cart__date"]} `}>{date}</li>
         <li className={`${cls["cart__item"]} ${cls["cart__transition"]}`}>
           {clicks}
         </li>
@@ -70,18 +70,10 @@ const StatistickCart = ({ data, hiddenTraider }: ICart) => {
             </ul>
           )}
         </li>
-        <li className={`${cls["cart__item"]} ${cls["cart__dep"]}`}>
-          $ {deposit}
-        </li>
-        <li className={`${cls["cart__item"]} ${cls["cart__payout"]}`}>
-          $ {payouts.toFixed(2)}
-        </li>
-        <li className={`${cls["cart__item"]} ${cls["cart__bonus"]} `}>
-          $ {worked_bonuses}
-        </li>
-        <li className={`${cls["cart__item"]} ${cls["cart__dinamic"]}`}>
-          $ {dynamics}
-        </li>
+        <li className={`${cls["cart__item"]}`}>$ {deposit}</li>
+        <li className={`${cls["cart__item"]}`}>$ {payouts.toFixed(2)}</li>
+        <li className={`${cls["cart__item"]}`}>$ {worked_bonuses}</li>
+        <li className={`${cls["cart__item"]}`}>$ {dynamics}</li>
         <li
           className={`${cls["cart__item"]} ${cls["cart__profit"]} ${revenue ? cls.active : ""}`}
         >

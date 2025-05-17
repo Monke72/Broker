@@ -10,6 +10,9 @@
     align-items: center;
     margin-inline: auto;
     gap: 10px;
+    @include desktop {
+      gap: 6px;
+    }
   }
 
   &__list {
@@ -25,6 +28,10 @@
     gap: 18px;
     padding-inline: 20px;
     justify-content: space-between;
+    @include desktop {
+      padding-inline: 10px;
+      gap: 7px;
+    }
   }
 
   &__info {
@@ -36,6 +43,9 @@
   &__title {
     font-size: 22px;
     font-weight: 100;
+    @include desktop {
+      font-size: 18px;
+    }
   }
 }
 .active {
@@ -49,6 +59,7 @@
 .stat__picker {
   color: rgba(59, 67, 83, 0.5);
   font-weight: 600;
+  max-width: 145px;
 }
 .stat__picker-error {
   position: absolute;
@@ -62,4 +73,11 @@
   border: 1px solid rgb(233, 233, 233);
   border-radius: 4px;
   padding-inline: 10px;
+}
+:where(.css-dev-only-do-not-override-18afz5u).ant-picker .ant-picker-input {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  left: -5px;
 }
