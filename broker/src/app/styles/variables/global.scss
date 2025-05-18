@@ -31,6 +31,7 @@
     --colum-size: 0.7fr 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr 1fr 0.5fr;
     --padding-cont: 25px;
     --cart-wrapper-size: 140%;
+    --all-traiders-size: 1100px;
   }
   @include mobile {
     --cart-wrapper-size: 1200px;
@@ -39,5 +40,9 @@
     --font-size-l: 14px;
     --font-size-xl: 16px;
     --font-size-xxl: 28px;
+  }
+  @include mobile-s {
+    --padding-cont: 20px;
+    --all-traiders-size: 900px;
   }
 }

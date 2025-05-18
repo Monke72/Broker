@@ -3,7 +3,18 @@
   white-space: nowrap;
   max-height: 100px;
   width: 100%;
-
+  &__input {
+    padding: 14px 40px;
+    height: 45px;
+    border-radius: 5px 0 0 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mobile-s {
+      padding: 12px 15px;
+    }
+  }
   &__top {
     display: flex;
     justify-content: space-between;
@@ -60,21 +71,12 @@
         margin-right: 5vw;
         max-width: 640px;
         width: 100%;
+
         @include desktop {
           margin-right: 20px;
         }
         @include tablet {
           margin-right: 0;
-        }
-
-        input {
-          padding: 14px 40px;
-          max-height: 45px;
-          border-radius: 5px 0 0 5px;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
       }
       &__salary {
@@ -122,8 +124,11 @@
   background-color: var(--color-blue-light);
   padding: 15px 26px;
   border-radius: 0 5px 5px 0;
-  max-height: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
+  @include mobile-s {
+    padding: 11px 20px;
+  }
 }

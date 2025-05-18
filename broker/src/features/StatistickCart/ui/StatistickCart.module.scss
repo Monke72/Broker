@@ -7,6 +7,9 @@
     grid-auto-flow: column;
     grid-template-columns: var(--colum-size);
     border-bottom: 1px solid var(--color-gray);
+    @include mobile-s {
+      padding: 20px 15px;
+    }
   }
 
   &__item {

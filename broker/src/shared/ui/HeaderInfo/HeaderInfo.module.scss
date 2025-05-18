@@ -37,6 +37,11 @@
   @include mobile {
     font-size: 26px;
   }
+  @include mobile-s {
+    padding-block: 25px;
+    padding-right: 10px;
+    font-size: 22px;
+  }
 }
 .header__wrapper {
   display: flex;

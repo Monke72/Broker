@@ -43,6 +43,9 @@
     @include mobile {
       font-size: 12px;
     }
+    @include mobile-s {
+      font-size: 10px;
+    }
   }
   &__title {
     font-size: 22px;

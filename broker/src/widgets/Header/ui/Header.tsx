@@ -19,7 +19,7 @@ const Header = () => {
   const data = useAppSelector((state) => state.traiders.data);
   const dispatch = useAppDispatch();
   const dataFilterByData = useAppSelector(
-    (state) => state.filterByDate.filterData,
+    (state) => state.filterByDate.filterData
   );
   console.log(dataFilterByData);
 
@@ -45,7 +45,7 @@ const Header = () => {
     const baseArray = dataFilterByData.length ? dataFilterByData : data;
 
     const result = baseArray.filter((traid) =>
-      traid.traders.some((trader) => trader.id.includes(searchValue)),
+      traid.traders.some((trader) => trader.id.includes(searchValue))
     );
 
     if (!result.length) {
@@ -71,6 +71,7 @@ const Header = () => {
             <input
               value={searchValue}
               type="text"
+              className={cls["header__input"]}
               placeholder="Поиск по ID"
               onChange={(e) => handlerInput(e)}
               onKeyDown={handleKeyDown}

@@ -42,12 +42,12 @@ const Sider = () => {
         </h3>
       </div>
       <div className={cls.sider__user}>
-        <img src={userIcon} alt="" />
+        <img src={userIcon} alt="" className={cls["sider__profile-image"]} />
         <div className={cls["sider__user-info"]}>
           <ul className={cls["sider__user-rating"]}>
             {Array.from({ length: 5 }).map((_, i) => (
               <li key={i}>
-                <img src={starActive} alt="" />
+                <img className={cls["sider__star"]} src={starActive} alt="" />
               </li>
             ))}
           </ul>
@@ -65,7 +65,7 @@ const Sider = () => {
             onClick={() => dispatch(setSection("main"))}
           >
             <span className={cls["sider__nav-icon"]}>
-              <img src={statistickIcon} alt="" />{" "}
+              <img src={statistickIcon} alt="" />
             </span>
             Главная/Статистика
           </li>

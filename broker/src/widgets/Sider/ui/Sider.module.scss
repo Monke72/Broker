@@ -9,6 +9,9 @@
   @include tablet {
     max-width: 320px;
   }
+  @include mobile-s {
+    max-width: 250px;
+  }
 
   &__application {
     background-color: var(--color-blue-light);
@@ -38,6 +41,10 @@
     @include desktop {
       gap: 15px;
     }
+    @include mobile-s {
+      padding-left: 20px;
+      padding-block: 30px;
+    }
     &-info {
       display: flex;
       flex-direction: column;
@@ -45,6 +52,9 @@
     &-rating {
       display: flex;
       gap: 6px;
+      @include mobile {
+        gap: 4px;
+      }
     }
     &-mail {
       padding-top: 5px;
@@ -84,6 +94,11 @@
         color: var(--color-light);
         cursor: pointer;
       }
+      @include mobile-s {
+        gap: 13px;
+        padding-block: 15px;
+        padding-left: 20px;
+      }
     }
   }
 }
@@ -95,5 +110,15 @@
     color: var(--color-light);
     opacity: 1;
     cursor: unset;
+  }
+}
+.sider__profile-image {
+  @include tablet {
+    max-width: 60px;
+  }
+}
+.sider__star {
+  @include mobile {
+    max-width: 14px;
   }
 }
