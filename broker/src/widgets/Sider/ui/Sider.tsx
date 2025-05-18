@@ -14,6 +14,7 @@ import { deleteAll } from "@features/LoginForm/model/slice";
 
 import React from "react";
 import { setSection } from "@features/SliderSections/model/sliderSectionsSlice";
+import ManagerInfo from "@shared/ui/ManagerInfo/ManagerInfo";
 
 const Sider = () => {
   const userMail = useAppSelector((state) => state.userReg.mail);
@@ -79,6 +80,7 @@ const Sider = () => {
           </li>
         </ul>
       </nav>
+      <ManagerInfo className="mobile" />
     </div>
   );
 };

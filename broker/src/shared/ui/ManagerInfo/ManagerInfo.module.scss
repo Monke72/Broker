@@ -27,3 +27,14 @@
     display: none;
   }
 }
+.mobile {
+  @include mobile {
+    width: 100%;
+    background-color: var(--color-blue);
+    justify-content: start;
+    padding-inline: var(--padding-cont);
+    padding-block: 5px;
+    margin-top: 36px;
+    border-block: 3px solid #4c5463;
+  }
+}
