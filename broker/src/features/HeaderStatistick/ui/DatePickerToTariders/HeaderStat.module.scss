@@ -1,53 +1,24 @@
 .stat {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   white-space: wrap;
 
   &__calendar {
     position: relative;
     display: flex;
     align-items: center;
-    margin-inline: auto;
+    margin-right: 2vw;
     gap: 10px;
+    @media (max-width: 1700px) {
+      margin-right: 10px;
+    }
     @include desktop {
       gap: 6px;
     }
   }
-
-  &__list {
-    display: flex;
-    padding-left: 10px;
-  }
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    max-width: 150px;
-    border-left: 1px solid rgb(233, 233, 233);
-    gap: 18px;
-    padding-inline: 20px;
-    justify-content: space-between;
-    @include desktop {
-      padding-inline: 10px;
-      gap: 7px;
-    }
-  }
-
-  &__info {
-    font-size: 14px;
-    max-width: 100px;
-    font-weight: 100;
-    line-height: 1.1;
-  }
-  &__title {
-    font-size: 22px;
-    font-weight: 100;
-    @include desktop {
-      font-size: 18px;
-    }
-  }
 }
+
 .active {
   font-family: var(--font-family-main);
   font-size: var(--font-size-xxl);
@@ -80,4 +51,13 @@
   align-items: center;
   width: 100%;
   left: -5px;
+  font-size: 13px;
+}
+.stat__open {
+  display: none;
+  @include tablet {
+    display: unset;
+    padding: 5px;
+    flex-shrink: 0;
+  }
 }

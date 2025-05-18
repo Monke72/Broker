@@ -1,0 +1,72 @@
+.stat {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  white-space: wrap;
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
+    border-left: 1px solid rgb(233, 233, 233);
+    gap: 18px;
+    padding-inline: 20px;
+    justify-content: space-between;
+    @include desktop {
+      padding-inline: 10px;
+      gap: 7px;
+    }
+    @include tablet {
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      max-width: unset;
+      gap: 3px;
+    }
+    @include mobile {
+      padding-inline: 3px;
+    }
+  }
+
+  &__info {
+    font-size: 14px;
+    max-width: 100px;
+    font-weight: 100;
+    line-height: 1.1;
+    @include tablet {
+      max-width: unset;
+    }
+    @include mobile {
+      font-size: 12px;
+    }
+  }
+  &__title {
+    font-size: 22px;
+    font-weight: 100;
+    @include desktop {
+      font-size: 18px;
+    }
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+}
+.desktop {
+  @include tablet {
+    display: none;
+  }
+}
+.tablet {
+  display: none;
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    white-space: wrap;
+    text-align: center;
+  }
+}

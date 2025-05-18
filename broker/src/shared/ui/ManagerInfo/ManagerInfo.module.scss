@@ -1,0 +1,29 @@
+.manager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px;
+  @include desktop {
+    padding-right: 20px;
+  }
+  &__u {
+    color: var(--color-blue-accent);
+    font-size: 12px;
+  }
+  &__name {
+    color: var(--color-light);
+    font-size: 18px;
+  }
+  &__status {
+    color: var(--color-green);
+    display: flex;
+  }
+  &__image {
+    padding-right: 14px;
+  }
+}
+.header {
+  @include mobile {
+    display: none;
+  }
+}

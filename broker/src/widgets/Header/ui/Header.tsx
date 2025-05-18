@@ -1,6 +1,4 @@
-import menegerIcon from "@shared/assets/icons/mianProfileIcon.svg";
 import searchIcon from "@shared/assets/icons/searchIcon.svg";
-import statusOnline from "@shared/assets/icons/statusOnline.svg";
 import React from "react";
 import cls from "./Header.module.scss";
 import {
@@ -13,6 +11,7 @@ import { notification } from "antd";
 import { sumKey } from "@entities/Traid";
 import { useState } from "react";
 import { setArray } from "@features/CartFilter/model/inputFilterslice";
+import ManagerInfo from "@shared/ui/ManagerInfo/ManagerInfo";
 
 const Header = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -66,21 +65,7 @@ const Header = () => {
     <header className={cls["header"]}>
       {contextHolder}
       <div className={cls["header__top"]}>
-        <div className={cls["header__top-manager"]}>
-          <div className={cls["header__top-manager__image"]}>
-            <img src={menegerIcon} alt="" />
-          </div>
-          <div className={cls["header__top-manager__info"]}>
-            <div className={cls["header__top-manager__u"]}>Ваш менеджер</div>
-            <h6 className={cls["header__top-manager__name"]}>Курт</h6>
-            <div className={cls["header__top-manager__status"]}>
-              <span>
-                <img src={statusOnline} alt="" />
-              </span>
-              Online
-            </div>
-          </div>
-        </div>
+        <ManagerInfo className="header" />
         <div className={cls["header__top-info"]}>
           <div className={cls["header__top-info__search"]}>
             <input

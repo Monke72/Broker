@@ -7,10 +7,10 @@ import { getMatch } from "@shared/utils/getMatch";
 const StatistickAll = () => {
   const { data } = useAppSelector((state) => state.traiders);
   const filterByTraiders = useAppSelector(
-    (state) => state.filterArray.filterArray
+    (state) => state.filterArray.filterArray,
   );
   const filterTraidersByData = useAppSelector(
-    (state) => state.filterByDate.filterData
+    (state) => state.filterByDate.filterData,
   );
 
   function getData() {
@@ -26,7 +26,7 @@ const StatistickAll = () => {
       return filterTraidersByData;
     // Если есть оба — вернуть пересечение по id (или другому уникальному ключу)
     return filterTraidersByData.filter((item) =>
-      filterByTraiders.some((el) => el.id === item.id)
+      filterByTraiders.some((el) => el.id === item.id),
     );
   }
   useEffect(() => {

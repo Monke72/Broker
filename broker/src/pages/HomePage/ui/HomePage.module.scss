@@ -8,6 +8,10 @@
     width: 100%;
     position: relative;
     height: 100vh;
+    @include tablet {
+      overflow-x: auto;
+      width: 100%;
+    }
   }
 }
 .home__overlay {

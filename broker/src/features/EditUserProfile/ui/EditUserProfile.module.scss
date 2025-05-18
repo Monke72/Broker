@@ -12,10 +12,19 @@
     padding: 25px 45px 30px 45px;
     max-width: 550px;
   }
+  @include mobile {
+    max-width: 500px;
+    padding: 20px 25px 25px 25px;
+    margin-inline: 30px;
+  }
 
   &__avatar {
     max-width: 80px;
     padding-bottom: 15px;
+    @include mobile {
+      max-width: 60px;
+      padding-bottom: 5px;
+    }
   }
   &__load {
     color: var(--color-text);
@@ -23,6 +32,9 @@
     margin-bottom: 36px;
     @include desktop {
       margin-bottom: 20px;
+    }
+    @include mobile {
+      margin-bottom: 12px;
     }
   }
   &__icon {
@@ -60,6 +72,10 @@
     -webkit-box-shadow: 0px 12px 10px -3px rgba(25, 157, 232, 0.35);
     -moz-box-shadow: 0px 12px 10px -3px rgba(25, 157, 232, 0.35);
     box-shadow: 0px 12px 10px -3px rgba(25, 157, 232, 0.35);
+    @include mobile {
+      max-width: 200px;
+      padding: 12px 10px;
+    }
   }
   &__source-list {
     position: absolute;
@@ -111,6 +127,9 @@
     color: var(--color-blue-light);
     line-height: 1;
     border-bottom: 1px solid var(--color-blue-light);
+    @include mobile {
+      font-size: 16px;
+    }
   }
 }
 .icon__tel,
@@ -123,6 +142,7 @@
 }
 .icon__source {
   left: -1px;
+  top: 8px;
 }
 .form__source-list .form__source-item:first-of-type {
   border-bottom: 1px solid rgb(233, 233, 233);
