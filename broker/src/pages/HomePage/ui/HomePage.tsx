@@ -6,19 +6,21 @@ import {
   useAppSelector,
 } from "@shared/hooks/StoreHooks/StoreHooks";
 import Header from "@widgets/Header/ui/Header";
-import HeaderStatisick from "@features/HeaderStatistick/ui/DatePickerToTariders/HeaderStat";
+import HeaderStatisick from "@features/HeaderStatistick/ui/DatePickerToTariders/HeaderStatistick";
 import StatistickAll from "@widgets/StatistickAll/ui/StatistickAll";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "@entities/Traid";
 import EditUserProfile from "@features/EditUserProfile/ui/EditUserProfile";
 import HeaderInfo from "@shared/ui/HeaderInfo/HeaderInfo";
 import { useQuerySize } from "@shared/lib/device/mediaQuerySize";
+import MobileHome from "./mobile/MobileHome";
+import { setSection } from "@features/SliderSections/model/sliderSectionsSlice";
 
 const HomePage: FC = () => {
   const entry = useAppSelector((state) => state.userReg.entry);
   const navSection = useAppSelector((state) => state.navSection.section);
   const loading = useAppSelector((state) => state.traiders.isLoading);
-  const isMobile = useQuerySize("767");
+  const isMobile = useQuerySize(570);
   console.log(isMobile);
 
   const navigate = useNavigate();
@@ -33,13 +35,19 @@ const HomePage: FC = () => {
       navigate("/reg");
     }
   }, [entry, navigate]);
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setSection("mobile"));
+    } else {
+      dispatch(setSection("main"));
+    }
+  }, [isMobile, dispatch]);
   return (
     <>
-      {entry && (
+      {!isMobile && entry && (
         <section className={cls.home}>
           <Sider />
           {loading && <div className={cls.home__overlay}></div>}
-
           {navSection === "main" && !loading && (
             <div className={cls.home__main}>
               <Header />
@@ -47,7 +55,6 @@ const HomePage: FC = () => {
               <StatistickAll />
             </div>
           )}
-
           {navSection === "profile" && !loading && (
             <div className={cls.home__main}>
               <Header />
@@ -57,6 +64,7 @@ const HomePage: FC = () => {
           )}
         </section>
       )}
+      {isMobile && <MobileHome />}
     </>
   );
 };

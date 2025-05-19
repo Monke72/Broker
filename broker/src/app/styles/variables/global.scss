@@ -45,4 +45,7 @@
     --padding-cont: 20px;
     --all-traiders-size: 900px;
   }
+  @include mobile-xs {
+    --all-traiders-size: 1050px;
+  }
 }

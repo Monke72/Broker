@@ -7,7 +7,7 @@ const ManagerInfo = ({ className }: { className: string }) => {
   return (
     <div className={`${cls["manager"]} ${cls[`${className}`]}`}>
       <div className={cls["manager__image"]}>
-        <img src={menegerIcon} alt="" />
+        <img className={cls["manager__image-face"]} src={menegerIcon} alt="" />
       </div>
       <div className={cls["manager__info"]}>
         <div className={cls["manager__u"]}>Ваш менеджер</div>

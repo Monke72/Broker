@@ -3,10 +3,8 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux";
-import type {
-  RootState,
-  AppDispatch,
-} from "@app/Providers/StoreProvider/store/store";
+import type { RootState } from "@app/Providers/StoreProvider/index";
+import { AppDispatch } from "@app/Providers/StoreProvider/store/store";
 
 // Кастомные хуки с типами
 export const useAppDispatch: () => AppDispatch = useDispatch;

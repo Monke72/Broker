@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import cls from "./Sider.module.scss";
 import applicationIcon from "@shared/assets/icons/applicationIcon.svg";
 import userIcon from "@shared/assets/icons/userProfile.svg";
 import exitIcon from "@shared/assets/icons/exit.svg";
+import strDown from "@shared/assets/icons/strLightDown.svg";
+import siderStrIcon from "@shared/assets/icons/strSiderMobile.svg";
 import {
   useAppDispatch,
   useAppSelector,
@@ -12,35 +15,43 @@ import miniProfileIcon from "@shared/assets/icons/profileNav.svg";
 import { useNavigate } from "react-router-dom";
 import { deleteAll } from "@features/LoginForm/model/slice";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { setSection } from "@features/SliderSections/model/sliderSectionsSlice";
 import ManagerInfo from "@shared/ui/ManagerInfo/ManagerInfo";
+import { useQuerySize } from "@shared/lib/device/mediaQuerySize";
+import CompanyHeader from "@widgets/ui/CompanyHeader";
 
 const Sider = () => {
   const userMail = useAppSelector((state) => state.userReg.mail);
   const navSection = useAppSelector((state) => state.navSection.section);
+  const [mobileStat, setMobileStat] = useState<boolean>(false);
+  console.log(navSection);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const isMobile = useQuerySize(570);
 
   const handlerExit = () => {
     navigate("/");
     dispatch(deleteAll());
   };
 
+  const handleStat = () => {
+    if (isMobile) {
+      setMobileStat((prev) => !prev);
+    } else {
+      dispatch(setSection("main"));
+    }
+  };
+  const handleExit = () => {
+    dispatch(setSection("profile"));
+    setMobileStat(false);
+  };
+
   return (
     <div className={cls.sider}>
-      <div className={cls.sider__application}>
-        <img
-          className={cls["sider__application-image"]}
-          src={applicationIcon}
-          alt=""
-        />
-        <h3 className={cls["sider__application-title"]}>
-          STARS BROKER <br />
-          <span className={cls["sider__application-text"]}>AFFILIATES</span>
-        </h3>
-      </div>
+      <CompanyHeader />
       <div className={cls.sider__user}>
         <img src={userIcon} alt="" className={cls["sider__profile-image"]} />
         <div className={cls["sider__user-info"]}>
@@ -53,7 +64,6 @@ const Sider = () => {
           </ul>
           <div className={cls["sider__user-mail"]}>{userMail}</div>
           <button onClick={handlerExit} className={cls["sider__user-exit"]}>
-            {" "}
             <img src={exitIcon} alt="" /> Выйти
           </button>
         </div>
@@ -61,22 +71,45 @@ const Sider = () => {
       <nav className={cls.sider__nav}>
         <ul className={cls["sider__nav-list"]}>
           <li
-            className={`${cls["sider__nav-item"]} ${navSection === "main" ? cls["item--active"] : ""}`}
-            onClick={() => dispatch(setSection("main"))}
+            className={`${cls["sider__nav-item"]} ${navSection === "main" && !isMobile ? cls["item--active"] : ""} ${mobileStat && isMobile ? cls["item--active"] : ""}`}
+            onClick={handleStat}
           >
             <span className={cls["sider__nav-icon"]}>
               <img src={statistickIcon} alt="" />
+              <p>Главная/Статистика</p>
             </span>
-            Главная/Статистика
+            {isMobile && <img src={strDown} alt="" />}
           </li>
+          {isMobile && mobileStat && (
+            <div className={cls["mobile__wrapper-buttons"]}>
+              <button
+                className={cls["mobile__button-stat"]}
+                onClick={() => dispatch(setSection("statAll"))}
+              >
+                <span>
+                  <img src={siderStrIcon} alt="" />
+                </span>
+                Cтатистика по CPA
+              </button>
+              <button
+                className={cls["mobile__button-stat"]}
+                onClick={() => dispatch(setSection("stat"))}
+              >
+                <span>
+                  <img src={siderStrIcon} alt="" />
+                </span>
+                Cтатистика по обороту
+              </button>
+            </div>
+          )}
           <li
-            className={`${cls["sider__nav-item"]} ${navSection === "profile" ? cls["item--active"] : ""}`}
-            onClick={() => dispatch(setSection("profile"))}
+            className={`${cls["sider__nav-item"]} ${navSection === "profile" && !isMobile ? cls["item--active"] : ""}`}
+            onClick={handleExit}
           >
             <span className={cls["sider__nav-icon"]}>
               <img src={miniProfileIcon} alt="" />
+              <p>Профиль</p>
             </span>
-            Профиль
           </li>
         </ul>
       </nav>

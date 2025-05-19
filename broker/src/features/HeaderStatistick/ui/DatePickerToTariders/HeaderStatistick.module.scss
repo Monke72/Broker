@@ -3,6 +3,10 @@
   display: flex;
   justify-content: end;
   white-space: wrap;
+  @include mobile-xs {
+    justify-content: start;
+    flex-direction: column;
+  }
 
   &__calendar {
     position: relative;
@@ -55,9 +59,32 @@
 }
 .stat__open {
   display: none;
+  background-color: #fff;
   @include tablet {
     display: unset;
     padding: 5px;
     flex-shrink: 0;
   }
+  @include mobile-xs {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: -42px;
+    left: 0;
+    padding-inline: 20px;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-gray);
+    padding-block: 10px;
+  }
+}
+.mobile__stat {
+  font-size: 14px;
+}
+.mobile__stat.opacity {
+  color: var(--color-text);
+}
+.mobile__exit {
+  padding: 20px 20px 10px 20px;
+  width: 100%;
+  background-color: #fff;
 }

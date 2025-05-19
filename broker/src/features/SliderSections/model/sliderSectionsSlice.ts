@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type NavSectionType = "main" | "profile";
+export type NavSectionType = "main" | "profile" | "stat" | "statAll" | "mobile";
 interface IInitialState {
   section: NavSectionType;
 }

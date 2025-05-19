@@ -12,25 +12,16 @@
   @include mobile-s {
     max-width: 250px;
   }
-
-  &__application {
-    background-color: var(--color-blue-light);
+  @include mobile-xs {
     width: 100%;
-    display: flex;
-    padding: 35px;
-    gap: 20px;
-    color: var(--color-light);
-    line-height: 1;
-    max-height: 100px;
-    @include mobile {
-      max-height: 80px;
-      padding: 25px;
-    }
-    &-text {
-      font-size: 12px;
-      font-family: var(--font-family-main);
-    }
+    max-width: unset;
   }
+  &__nav-icon {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
   &__user {
     display: flex;
     color: var(--color-light);
@@ -44,6 +35,9 @@
     @include mobile-s {
       padding-left: 20px;
       padding-block: 30px;
+    }
+    @include mobile-xs {
+      padding-block: 22px;
     }
     &-info {
       display: flex;
@@ -99,6 +93,10 @@
         padding-block: 15px;
         padding-left: 20px;
       }
+      @include mobile-xs {
+        justify-content: space-between;
+        padding-right: 20px;
+      }
     }
   }
 }
@@ -116,9 +114,30 @@
   @include tablet {
     max-width: 60px;
   }
+  @include mobile-xs {
+    max-width: 50px;
+  }
 }
 .sider__star {
   @include mobile {
     max-width: 14px;
   }
+}
+.mobile__button-stat {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3d4657;
+  width: 100%;
+  gap: 10px;
+  color: var(--color-blue-accent);
+  @include hover {
+    color: var(--color-light);
+  }
+}
+.mobile__wrapper-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 1px;
 }

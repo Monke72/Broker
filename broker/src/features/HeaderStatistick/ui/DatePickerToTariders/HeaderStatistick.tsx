@@ -1,7 +1,7 @@
 import HeaderInfo from "@shared/ui/HeaderInfo/HeaderInfo";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
-import cls from "./HeaderStat.module.scss";
+import cls from "./HeaderStatistick.module.scss";
 import type { DatePickerProps } from "antd";
 import { useEffect, useState } from "react";
 import {
@@ -9,25 +9,30 @@ import {
   useAppSelector,
 } from "@shared/hooks/StoreHooks/StoreHooks";
 import strDown from "@shared/assets/icons/strList.svg";
-
 import minMax from "dayjs/plugin/minMax";
 import isBetween from "dayjs/plugin/isBetween";
 import { setTraidersByDate } from "@features/CartFilter/model/dateFilterSlice";
 import StatistickTraiders from "../StatistickTraiders/StatistickTraiders";
 import { useQuerySize } from "@shared/lib/device/mediaQuerySize";
+import BackToHome from "@features/BackToHome/ui/BackToHome";
 
 dayjs.extend(minMax);
 dayjs.extend(isBetween);
 
-const HeaderStatisick = () => {
-  const [openStat, setOpenStat] = useState<boolean>(false);
+interface HeaderStatisickProps {
+  openStat?: boolean;
+  setOpenStat?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const HeaderStatisick = ({ openStat, setOpenStat }: HeaderStatisickProps) => {
   const [dateStart, setDateStart] = useState<string>("");
   const [dateFinish, setDateFinish] = useState<string>("");
-
+  const isMobile = useQuerySize(570);
   const fullData = useAppSelector((state) => state.traiders.data);
   const thousandWidth = useQuerySize(999);
 
   const dispatch = useAppDispatch();
+  const navSection = useAppSelector((state) => state.navSection.section);
+  console.log(navSection);
 
   // Обработка выбора даты
   const onChangeStart: DatePickerProps["onChange"] = (_, dateString) => {
@@ -72,10 +77,13 @@ const HeaderStatisick = () => {
 
   return (
     <>
+      <BackToHome />
       <HeaderInfo
         open={openStat}
         title="Статистика"
-        childOutside={<StatistickTraiders className="tablet" />}
+        childOutside={
+          navSection !== "statAll" && <StatistickTraiders className="touch" />
+        }
       >
         <div className={cls["stat"]}>
           <div className={cls["stat__calendar"]}>
@@ -107,6 +115,13 @@ const HeaderStatisick = () => {
             className={cls.stat__open}
             onClick={() => setOpenStat((prev) => !prev)}
           >
+            {isMobile && (
+              <h5
+                className={`${cls.mobile__stat} ${openStat ? `${cls.opacity}` : ""}`}
+              >
+                Подробнее
+              </h5>
+            )}
             {<img src={strDown} alt="" />}
           </button>
         </div>

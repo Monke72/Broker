@@ -3,6 +3,10 @@
   white-space: nowrap;
   max-height: 100px;
   width: 100%;
+  @include mobile-xs {
+    background-color: transparent;
+    width: 75%;
+  }
   &__input {
     padding: 14px 40px;
     height: 45px;
@@ -14,6 +18,11 @@
     @include mobile-s {
       padding: 12px 15px;
     }
+    @include mobile-xs {
+      width: clamp(4.063rem, 1.262rem + 14vw, 6.25rem);
+      height: 30px;
+      border-radius: 5px 5px 5px 5px;
+    }
   }
   &__top {
     display: flex;
@@ -21,6 +30,11 @@
     align-items: center;
     margin-inline: var(--padding-cont);
     border-right: 1px solid rgb(76, 84, 99);
+    @include mobile-xs {
+      margin-inline: 0;
+      justify-content: end;
+      border: 0;
+    }
 
     &-manager {
       display: flex;
@@ -62,6 +76,12 @@
       @include mobile {
         height: 80px;
       }
+      @include mobile-xs {
+        border: none;
+        justify-content: end;
+        padding: 0;
+        flex: unset;
+      }
 
       &__search {
         display: flex;
@@ -77,6 +97,9 @@
         }
         @include tablet {
           margin-right: 0;
+        }
+        @include mobile-xs {
+          justify-content: end;
         }
       }
       &__salary {
@@ -117,6 +140,9 @@
     @include mobile {
       font-size: 14px;
       padding-inline: 20px;
+    }
+    @include mobile-xs {
+      display: none;
     }
   }
 }

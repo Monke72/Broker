@@ -1,0 +1,31 @@
+.company__wrapper {
+  background-color: var(--color-blue-light);
+  width: 100%;
+  display: flex;
+  padding: 35px;
+  gap: 20px;
+  color: var(--color-light);
+  line-height: 1;
+  max-height: 100px;
+  @include mobile {
+    max-height: 80px;
+    padding: 25px;
+  }
+  @include mobile-xs {
+    max-height: 65px;
+    gap: 0px;
+    padding: 20px 10px 20px 20px;
+  }
+  &-text {
+    font-size: 12px;
+    font-family: var(--font-family-main);
+  }
+}
+.company__application {
+  @include mobile-xs {
+    display: flex;
+    background-color: var(--color-blue-light);
+    align-items: center;
+    justify-content: space-between;
+  }
+}

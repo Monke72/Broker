@@ -1,11 +1,14 @@
 .all {
   overflow-y: auto;
-
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+
+  @include mobile-xs {
+    white-space: nowrap;
+  }
+
   &__header {
     min-width: var(--all-traiders-size);
   }

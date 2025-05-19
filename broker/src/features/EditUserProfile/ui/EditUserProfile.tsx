@@ -40,7 +40,7 @@ const EditUserProfile = () => {
   const [openSource, setOpenSource] = useState<boolean>(false);
   const [source, setSource] = useState<SourceTraffic>("");
   const { mail, password, tg, name, tel, traffic } = useAppSelector(
-    (state) => state.userReg,
+    (state) => state.userReg
   );
   const dispatch = useAppDispatch();
 
@@ -123,7 +123,7 @@ const EditUserProfile = () => {
             inputType={InputType.Secondary}
             iconClassName={cls.edit__icon}
             icon={passwordIcon}
-            className={cls.form__def}
+            className={cls.form__password}
             {...register("password", { required: true, validate: valPassword })}
             placeholder="Пароль"
             password

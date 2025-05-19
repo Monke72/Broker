@@ -115,6 +115,9 @@
     @include mobile-s {
       grid-template-columns: repeat(1, 1fr);
     }
+    @include mobile-xs {
+      padding-bottom: 30px;
+    }
   }
 }
 .ref {
@@ -169,4 +172,9 @@
 }
 .form__traffic {
   position: relative;
+}
+.form__password {
+  @include mobile-xs {
+    margin-bottom: 20px;
+  }
 }
