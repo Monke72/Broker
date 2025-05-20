@@ -6,6 +6,7 @@ export function refactorArray(array: BrokerStat[], date: string): BrokerStat {
 
   // Инициализируем newArray как объект, а не как массив
   const newArray: BrokerStat = {
+    id: 0,
     date: date, // Устанавливаем значение для свойства date
     clicks: 0, // Инициализируем остальные свойства с дефолтными значениями
     registrations: 0,
