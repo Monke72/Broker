@@ -1,31 +1,31 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import cls from "./Sider.module.scss";
-import applicationIcon from "@shared/assets/icons/applicationIcon.svg";
+
 import userIcon from "@shared/assets/icons/userProfile.svg";
 import exitIcon from "@shared/assets/icons/exit.svg";
 import strDown from "@shared/assets/icons/strLightDown.svg";
 import siderStrIcon from "@shared/assets/icons/strSiderMobile.svg";
+import starActive from "@shared/assets/icons/starActive.svg";
+import statistickIcon from "@shared/assets/icons/stat.svg";
+import miniProfileIcon from "@shared/assets/icons/profileNav.svg";
+
 import {
   useAppDispatch,
   useAppSelector,
 } from "@shared/hooks/StoreHooks/StoreHooks";
-import starActive from "@shared/assets/icons/starActive.svg";
-import statistickIcon from "@shared/assets/icons/stat.svg";
-import miniProfileIcon from "@shared/assets/icons/profileNav.svg";
+
 import { useNavigate } from "react-router-dom";
 import { deleteAll } from "@features/LoginForm/model/slice";
-
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { setSection } from "@features/SliderSections/model/sliderSectionsSlice";
 import ManagerInfo from "@shared/ui/ManagerInfo/ManagerInfo";
 import { useQuerySize } from "@shared/lib/device/mediaQuerySize";
-import CompanyHeader from "@widgets/ui/CompanyHeader";
+
+import CompanyHeader from "@widgets/CompanyHeader/ui/CompanyHeader";
 
 const Sider = () => {
   const userMail = useAppSelector((state) => state.userReg.mail);
   const navSection = useAppSelector((state) => state.navSection.section);
   const [mobileStat, setMobileStat] = useState<boolean>(false);
-  console.log(navSection);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

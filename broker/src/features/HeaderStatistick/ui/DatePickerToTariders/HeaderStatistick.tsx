@@ -1,4 +1,4 @@
-import HeaderInfo from "@shared/ui/HeaderInfo/HeaderInfo";
+import HeaderInfo from "@widgets/HeaderInfo/HeaderInfo";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import cls from "./HeaderStatistick.module.scss";
@@ -32,7 +32,6 @@ const HeaderStatisick = ({ openStat, setOpenStat }: HeaderStatisickProps) => {
 
   const dispatch = useAppDispatch();
   const navSection = useAppSelector((state) => state.navSection.section);
-  console.log(navSection);
 
   // Обработка выбора даты
   const onChangeStart: DatePickerProps["onChange"] = (_, dateString) => {

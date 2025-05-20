@@ -16,4 +16,5 @@ export interface IInputForm extends InputHTMLAttributes<HTMLInputElement> {
   setVisible?: React.Dispatch<React.SetStateAction<boolean>>;
   error?: string;
   children?: React.ReactNode;
+  passwordClass?: string;
 }

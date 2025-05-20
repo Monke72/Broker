@@ -15,6 +15,7 @@ const InputForm: FC<IInputForm> = ({
   password,
   error,
   children,
+  passwordClass,
   ...rest
 }) => {
   const [visible, setVisible] = useState<boolean>(true);
@@ -37,7 +38,7 @@ const InputForm: FC<IInputForm> = ({
         {children}
         {password && (
           <span
-            className={cls.input__password}
+            className={`${cls.input__password} ${cls[`${passwordClass}`]}`}
             onClick={() => setVisible((prev) => !prev)}
           >
             {!visible ? (

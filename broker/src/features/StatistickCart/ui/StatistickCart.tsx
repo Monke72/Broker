@@ -49,7 +49,7 @@ const StatistickCart = ({ data, hiddenTraider, all }: ICart) => {
         <li
           className={`${cls["cart__item"]} ${cls["cart__ftd"]} ${ftd ? cls.active : ""}`}
         >
-          {ftd}
+          {!isNaN(ftd) ? ftd : ""}
         </li>
         <li
           className={`${cls["cart__item"]} ${cls["cart__traid"]} ${traders_count && !hiddenTraider ? cls.active__traid : ""}`}

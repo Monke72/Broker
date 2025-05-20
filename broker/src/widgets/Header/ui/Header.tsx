@@ -21,7 +21,6 @@ const Header = () => {
   const dataFilterByData = useAppSelector(
     (state) => state.filterByDate.filterData
   );
-  console.log(dataFilterByData);
 
   //события по инпуту
   const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {

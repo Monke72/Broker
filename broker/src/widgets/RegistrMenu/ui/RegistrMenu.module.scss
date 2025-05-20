@@ -7,17 +7,27 @@
 
   &__title {
     color: var(--color-light);
+    font-size: 28px;
+    @include mobile-xs {
+      font-size: 22px;
+    }
   }
   &__info {
     padding-top: 10px;
     font-size: var(--font-size-xl);
     color: var(--color-light-any);
     font-weight: 300;
+    @include mobile-xs {
+      padding-top: 0px;
+    }
   }
 
   label {
     color: rgba(238, 238, 238, 0.5);
     line-height: 1;
+    @include mobile-xs {
+      max-width: 240px;
+    }
     span {
       font-size: 16px;
       font-family: var(--font-family-bold);
@@ -29,6 +39,9 @@
 .field {
   display: flex;
   padding-block: 20px;
+  @include mobile-xs {
+    align-items: center;
+  }
 }
 .menu__checkbox[type="checkbox"] {
   -webkit-appearance: none;
@@ -50,6 +63,9 @@
     z-index: 11;
     left: 2px;
     top: -1px;
+    @include mobile-xs {
+      top: 0;
+    }
   }
 }
 

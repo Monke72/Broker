@@ -6,8 +6,12 @@
   background-repeat: no-repeat;
   background-position: center;
 
-  &__page {
+  &__title {
     color: var(--color-blue-light);
+    font-size: 28px;
+    @include mobile-xs {
+      font-size: 22px;
+    }
   }
   &__header {
     display: flex;
@@ -28,6 +32,11 @@
     }
     span {
       font-family: var(--font-family-main);
+    }
+  }
+  &__image {
+    @include mobile-xs {
+      max-width: 70px;
     }
   }
 }

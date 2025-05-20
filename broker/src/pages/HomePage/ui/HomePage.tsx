@@ -11,7 +11,7 @@ import StatistickAll from "@widgets/StatistickAll/ui/StatistickAll";
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "@entities/Traid";
 import EditUserProfile from "@features/EditUserProfile/ui/EditUserProfile";
-import HeaderInfo from "@shared/ui/HeaderInfo/HeaderInfo";
+import HeaderInfo from "@widgets/HeaderInfo/HeaderInfo";
 import { useQuerySize } from "@shared/lib/device/mediaQuerySize";
 import MobileHome from "./mobile/MobileHome";
 import { setSection } from "@features/SliderSections/model/sliderSectionsSlice";
@@ -20,8 +20,8 @@ const HomePage: FC = () => {
   const entry = useAppSelector((state) => state.userReg.entry);
   const navSection = useAppSelector((state) => state.navSection.section);
   const loading = useAppSelector((state) => state.traiders.isLoading);
+
   const isMobile = useQuerySize(570);
-  console.log(isMobile);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -35,6 +35,7 @@ const HomePage: FC = () => {
       navigate("/reg");
     }
   }, [entry, navigate]);
+
   useEffect(() => {
     if (isMobile) {
       dispatch(setSection("mobile"));
@@ -42,28 +43,34 @@ const HomePage: FC = () => {
       dispatch(setSection("main"));
     }
   }, [isMobile, dispatch]);
+
   return (
     <>
-      {!isMobile && entry && (
+      {!isMobile && (
         <section className={cls.home}>
           <Sider />
           {loading && <div className={cls.home__overlay}></div>}
-          {navSection === "main" && !loading && (
+          {!loading && (
             <div className={cls.home__main}>
-              <Header />
-              <HeaderStatisick />
-              <StatistickAll />
-            </div>
-          )}
-          {navSection === "profile" && !loading && (
-            <div className={cls.home__main}>
-              <Header />
-              <HeaderInfo title="Редактирование профиля" />
-              <EditUserProfile />
+              {navSection === "main" && (
+                <>
+                  <Header />
+                  <HeaderStatisick />
+                  <StatistickAll />
+                </>
+              )}
+              {navSection === "profile" && (
+                <>
+                  <Header />
+                  <HeaderInfo title="Редактирование профиля" />
+                  <EditUserProfile />
+                </>
+              )}
             </div>
           )}
         </section>
       )}
+
       {isMobile && <MobileHome />}
     </>
   );
