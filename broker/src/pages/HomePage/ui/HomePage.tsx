@@ -32,7 +32,10 @@ const HomePage: FC = () => {
 
   useEffect(() => {
     if (!entry) {
-      navigate("/reg");
+      navigate("/Broker/reg");
+    }
+    if (entry) {
+      navigate("/Broker/");
     }
   }, [entry, navigate]);
 

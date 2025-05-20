@@ -39,7 +39,7 @@ const RegistrMenu: FC = () => {
     setPasswordError(
       passwordIsValid
         ? ""
-        : "Пароль должен содержать 8 символов, цифры и заглавные буквы",
+        : "Пароль должен содержать 8 символов, цифры и заглавные буквы"
     );
     setAgreeError(!agreeIsValid);
 
@@ -47,7 +47,7 @@ const RegistrMenu: FC = () => {
       dispatch(setMailReg(email));
       dispatch(setPasswordReg(password));
       dispatch(setEntry(true));
-      navigate("/", { replace: true }); //переходим на главную страницу и запрещаем переход назад
+      navigate("/Broker/", { replace: true }); //переходим на главную страницу и запрещаем переход назад
     }
   };
 

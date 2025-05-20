@@ -40,3 +40,20 @@
     }
   }
 }
+.reg__error {
+  font-size: 20px;
+  color: var(--color-blue);
+  text-align: center;
+
+  h1 {
+    color: var(--color-blue-accent);
+    @include mobile-xs {
+      line-height: 1.2;
+      padding-bottom: 20px;
+    }
+  }
+  button {
+    color: var(--color-blue-light);
+    border-bottom: 1px solid var(--color-blue-light);
+  }
+}

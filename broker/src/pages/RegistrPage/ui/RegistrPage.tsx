@@ -3,8 +3,11 @@ import brokerIcon from "@shared/assets/icons/brokerIconBlue.svg";
 import RegistrMenu from "@widgets/RegistrMenu/ui/RegistrMenu";
 import cls from "./Registr.module.scss";
 import Title from "@shared/ui/Title/Title";
+import { useAppSelector } from "@shared/hooks/StoreHooks/StoreHooks";
+import { Link } from "react-router-dom";
 
 const RegistrPage: FC = () => {
+  const entry = useAppSelector((state) => state.userReg.entry);
   return (
     <section className={cls.reg}>
       <div className={`${cls.reg__wrapper} container`}>
@@ -21,7 +24,15 @@ const RegistrPage: FC = () => {
           </div>
           <Title className={cls.reg__title}>Регистрация</Title>
         </div>
-        <RegistrMenu />
+        {!entry && <RegistrMenu />}
+        {entry && (
+          <div className={cls.reg__error}>
+            <h1>Вы уже зарегистрированы</h1>
+            <Link to={"/Broker/"}>
+              <button>Вернемся домой?</button>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -40,7 +40,7 @@ const EditUserProfile = () => {
   const [openSource, setOpenSource] = useState<boolean>(false);
   const [source, setSource] = useState<SourceTraffic>("");
   const { mail, password, tg, name, tel, traffic } = useAppSelector(
-    (state) => state.userReg,
+    (state) => state.userReg
   );
   const dispatch = useAppDispatch();
 
