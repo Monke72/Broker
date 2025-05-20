@@ -8,9 +8,11 @@
   align-items: center;
   border-radius: 5px;
   color: var(--color-text);
+  margin-bottom: 20px;
   @include desktop {
-    padding: 25px 45px 30px 45px;
+    padding: 20px 45px 25px 45px;
     max-width: 550px;
+    margin-bottom: 20px;
   }
   @include mobile {
     max-width: 500px;
@@ -20,6 +22,7 @@
   @include mobile-s {
     margin-inline: 20px;
     padding: 23px 20px 35px 20px;
+    margin-bottom: 20px;
   }
 
   &__avatar {
@@ -122,7 +125,7 @@
 }
 .ref {
   text-align: center;
-  padding-block: 35px;
+  padding-block: clamp(1.5rem, 0.154rem + 1.54vw, 2rem);
   @include desktop {
     padding: 14px 0 20px 0;
   }
