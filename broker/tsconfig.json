@@ -1,6 +1,8 @@
 {
   "include": ["src"],
   "compilerOptions": {
+    "lib": ["DOM", "ES2017"],
+    "types": ["jest"],
     "jsx": "react-jsx",
     "baseUrl": ".",
     "esModuleInterop": true,

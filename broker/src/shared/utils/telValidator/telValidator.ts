@@ -1,6 +1,6 @@
 export const validatePhone = (value?: string) => {
   if (!value || typeof value !== "string") {
-    return;
+    return "Введите корректный номер телефона";
   }
 
   const cleaned = value.replace(/[\s()-]/g, ""); // удаляем пробелы, скобки, тире

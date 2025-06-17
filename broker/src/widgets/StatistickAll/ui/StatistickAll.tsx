@@ -2,7 +2,7 @@ import { refactorArray, StatistickCart } from "@features/StatistickCart";
 import cls from "./StatistickAll.module.scss";
 import { useAppSelector } from "@shared/hooks/StoreHooks/StoreHooks";
 import { useEffect } from "react";
-import { getMatch } from "@shared/utils/getMatch";
+import { getMatch } from "@shared/utils/getMatch/getMatch";
 
 const StatistickAll = () => {
   const { data } = useAppSelector((state) => state.traiders);

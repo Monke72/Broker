@@ -18,9 +18,9 @@ import strList from "@shared/assets/icons/strList.svg";
 
 //валидация формы
 import { validateEmail } from "@shared/utils/emailValidator";
-import { validateName } from "@shared/utils/validateName";
+import { validateName } from "@shared/utils/validateName/validateName";
 import { passwordValid } from "@shared/utils/passwordValidator";
-import { validatePhone } from "@shared/utils/telValidator";
+import { validatePhone } from "@shared/utils/telValidator/telValidator";
 import { validateTelegram } from "@shared/utils/validateTg";
 import { useState } from "react";
 import {
