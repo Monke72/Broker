@@ -86,6 +86,7 @@ const RegistrMenu: FC = () => {
       />
       <div className={cls.field}>
         <input
+          data-testid="checkbox-input"
           type="checkbox"
           id={cls.menu__checkbox}
           className={`${cls.menu__checkbox} ${
@@ -100,7 +101,9 @@ const RegistrMenu: FC = () => {
         </label>
       </div>
 
-      <Button onClick={handleSubmit}>Зарегистрироваться</Button>
+      <Button data-testid="submit-button" onClick={handleSubmit}>
+        Зарегистрироваться
+      </Button>
     </div>
   );
 };

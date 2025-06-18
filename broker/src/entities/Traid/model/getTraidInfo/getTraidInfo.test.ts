@@ -1,4 +1,5 @@
 import { fetchData } from "./getTraidInfo";
+
 import axios from "axios";
 import { BrokerStat } from "../types/types";
 
